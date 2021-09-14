@@ -1,0 +1,180 @@
+@font-face {
+	font-family: "utm_bryantlgregular";
+	src: url(../assets/fonts/utm_bryantlg-webfont.woff2) format("woff2"),
+			 url(../assets/fonts/utm_bryantlg-webfont.woff) format("woff");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+
+$font_Open_Sans: "Open Sans", sans-serif;
+$font_UTM_BryantLG: "utm_bryantlgregular";
+$background_color_header_in_768px: #fefbfb; 
+$text_navbar_color: #505353;
+$button_color: #B2D235;
+$white_color: #ffffff;
+$hapo_learn_title_bold_text_color: #11114E;
+$hapo_learn_quote: #505353;
+$hapo_learn_button_shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+$hapo_learn_button_text_hover: #11114E;
+$hapo_learn_linear-gradient_color: #ece5e5;
+$background_color_front_end_image: #3F6185;
+$background_color_laravel_image: #DC594C;
+$background_color_php_image: #556598;
+$text_color_card_content: #505353;
+$button_box_shadow_color: #6F8710;
+$css_tutorial_background_color: #24ABE2;
+$rails_tutorial_background_color: #E14E40;
+$java_tutorial_background_color: #1B75BB;
+$view_all_our_courses_color: #90AB26;
+$yellow_color: #F2C54F;
+$black_color: #000000;
+$box_shadow_comment: 0px 0px 7px rgba(0, 0, 0, 0.5);
+$title_bold_text_color: #11114E;
+$gray_color: #D9DADC;
+$scroll_color: #E2E2E2;
+$box_shadow_button: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+$copyright_background_color: #454545;
+$input_color: #F2F2F2;
+$button_login_box_shadow: inset 0px 1.5px 2px #6F8710;
+$google_account_color: #DC4E41;
+$facebook_account_color: #3B5999;
+$slick_arrow_color: #969494;
+
+.body {
+	background-color: $white_color ;
+}
+
+@mixin main_courses_item_card {
+	width: 100%;
+	margin: 0 15px;
+	border-radius: 15px ;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25) ;
+	transition: transform 0.3s;
+}
+
+@mixin common_for_courses_image {
+	height: 190px;
+	max-width: 100%;
+	border-radius: 15px 15px 0px 0px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25) ;
+}
+
+@mixin card_content_title {
+	margin-bottom: 5px;
+	font-family: $font_UTM_BryantLG;
+	font-size: 30px;
+	font-weight: 800;
+	color: $button_color;
+	line-height: 36px;
+	letter-spacing: -0.5px;
+	white-space: nowrap;
+	width: inherit;
+	overflow: hidden;
+}
+
+@mixin card_content_body {
+	margin-top: 5px;
+	margin-bottom: 0;
+	font-family: $font_UTM_BryantLG;
+	font-size: 15px;
+	line-height: 20px;
+	font-weight: bold;
+	color: $text_color_card_content;
+	letter-spacing: -0.5px;
+	text-align: center;
+}
+
+@mixin courses-button {
+	width: 200px;
+	height: 42px;
+	margin-top: 15px;
+	font-size: 18px;
+	line-height: 22px;
+	font-family: $font_UTM_BryantLG;
+	font-weight: bold;
+	color: $white_color;
+	background: $button_color;
+	border-radius: 22px;
+	box-shadow: inset 0px 1.5px 2px $button_box_shadow_color;
+	letter-spacing: -0.5px;
+}
+
+@mixin common_for_courses_image_media_769px {
+	height: 151px;
+	width: 100%;
+	border-radius: 15px 15px 0px 0px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25) ;
+}
+
+@mixin card_content_title_media_769px {
+	height: 22px;
+	font-size: 16px;
+	line-height: 24.52px;
+	margin: 8.5px 0 0 0;
+}
+
+@mixin card_content_body_media_769px {
+	font-size: 14px;
+	overflow: hidden;
+	line-height: 18.75px;
+	display: -webkit-box;
+	-webkit-line-clamp: 4;
+	-webkit-box-orient: vertical; 
+	width: 198px;
+	height: 75px;
+}
+
+@mixin courses_button_media_769px {
+	height: 27.5px;
+	width: 130px;
+	font-size: 14px;
+	line-height: 12.26px;
+	margin-bottom: 15px;
+	margin-top: 5px;
+	letter-spacing: -1px;
+}
+ 
+@mixin main_courses_item_card_media_575px {
+	width: 280px;
+}
+
+@mixin common_for_courses_image_media_575px {
+	height: 163px;
+}
+
+@mixin card_content_title_media_575px {
+	height: 25px;
+	font-size: 20px;
+	margin: 18px 0 0 0;
+	letter-spacing: -5%;
+}
+
+@mixin main_courses_card_content_media_575px {
+	width: inherit;
+	height: auto;
+	font-size: 14px;
+	line-height: 20px;
+	margin: 5px 16px;
+}
+
+@mixin card_content_body_media_575px {
+	width: 246px;
+	height: 82px;
+	font-size: 14px;
+	line-height: 20px;
+	margin: 10px 16px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+}
+
+@mixin courses-button_media_575px {
+	height: 35px;
+	width: 180px;
+	font-size: 16px;
+	margin-top: 10px;
+	margin-bottom: 15px;
+}

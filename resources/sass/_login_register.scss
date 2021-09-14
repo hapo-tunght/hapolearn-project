@@ -1,0 +1,376 @@
+.modal-open .modal {
+  overflow-y: hidden !important;
+}
+
+.login-register-form {
+  font-family: $font_UTM_BryantLG;
+
+  .modal-title {
+    position: relative;
+
+    .close-tab {
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      top: -15px;
+      right: -15px;
+      border: 0;
+      background-color: $button_color;
+    }
+
+    .fa-times {
+      color: $white_color;
+      font-size: 22px;
+    }
+  }
+
+  .nav-link {
+    height: 65px;
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    line-height: 31px;
+    font-weight: normal;
+    color: $button_color;
+    -webkit-text-stroke-width: 1.5px;
+  }
+
+  .nav-item {
+    background: $white_color;
+  }
+
+  .nav-item .active {
+    background: $button_color;
+    color: $white_color;
+  }
+
+  .login-username {
+    margin-top: 40px !important;
+  }
+
+  .form-group {
+    margin: 25px 15px;
+  }
+
+  .form-group label {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 25px;
+    opacity: 0.8;
+    margin-bottom: 6px;
+  }
+
+  .form-control {
+    height: 50px;
+    background-color: $input_color;
+  }
+
+  .font-weight-bold {
+    margin-bottom: 0;
+  }
+
+  .form-check-custom {
+    margin-left: 0 !important;
+  }
+
+  .form-check-label {
+    height: 27px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .form-check-label p {
+    cursor: pointer;
+  }
+
+  .font-weight-bold {
+    padding-right: 15px;
+  }
+
+  .form-check-input {
+    position: relative;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+
+  .form-check-input:before {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      top: 0;
+      left: 0;
+      background-color:#e9e9e9;
+      border-radius: 2px;
+  }
+
+  .form-check-input:checked:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 0;
+    left: 0;
+    background-color: $button_color;
+  }
+
+  .form-check-input:checked:after {
+    content: "";
+    display: block;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    position: absolute;
+    top: 2px;
+    left: 6px;
+  }
+  
+  .text-right {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    color: $button_color;
+    opacity: 0.8;
+  }
+
+  .button-cover {
+    .btn {
+      width: 200px;
+      height: 42px;
+      font-size: 18px;
+      font-weight: bold;
+      background: $button_color;
+      color: $white_color;
+      box-shadow: $button_login_box_shadow;
+      border-radius: 22px;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      color: $hapo_learn_button_text_hover !important;
+    }
+  }
+
+  .login-with {
+    .horizontal-rule {
+      width: 180px;
+    }
+    
+    p {
+      width: 110px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 25px;
+      letter-spacing: 0.5px;
+      margin-bottom: 7px;
+    }
+  }
+
+  .login-with-account {
+    margin: 0 15px;
+
+    a {
+      width: 100%;
+      height: 55px;
+      color: $white_color;
+      font-size: 20px;
+    }
+
+    &-google {
+      background: $google_account_color;
+    }
+
+    &-google:hover {
+      opacity: 0.8;
+    }
+
+    &-facebook {
+      background: $facebook_account_color;
+    }
+
+    &-facebook:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .register-form {
+    .form-group {
+      margin: 35px 15px;
+    }
+
+    .register-username {
+      margin-top: 45px;
+    }
+
+    .button-cover {
+      margin-top: 20px;
+      margin-bottom: 45px;
+    }
+
+    .button-register {
+      margin-top: 20px;
+    }
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .modal-dialog-centered {
+    display: flex;
+    justify-content: center;
+    padding: 0px 10px;
+  }
+
+  .modal-content-custom {
+    width: 93%;
+
+    .modal-title {
+      .close-tab {
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        top: -12px;
+        right: -12px;
+      }
+
+      .fa-times {
+        font-size: 18px;
+      }
+    }
+
+    .nav-link {
+      height: 55px;
+      font-size: 22px;
+      line-height: 25px;
+      -webkit-text-stroke-width: 1px;
+    }
+    
+    .login-username {
+      margin-top: 25px !important;
+    }
+
+    .form-group {
+      margin: 20px 15px;
+    }
+
+    .form-group label {
+      font-size: 16px;
+      line-height: 20px;
+      opacity: 0.8;
+      margin-bottom: 4px;
+    }
+
+    .form-control {
+      height: 45px;
+    }
+
+
+    .form-check-label p {
+      font-size: 16px;
+      margin-top: 3px;
+    }
+
+    .form-check-input {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    
+
+    .text-right {
+      font-size: 16px;
+    }
+
+    .login-with {
+      .horizontal-rule {
+        width: 120px;
+      }
+      
+      p {
+        width: 120px;
+        font-size: 18px;
+      }
+    }
+
+    .login-with-account {
+      a {
+        width: 100%;
+        height: 45px;
+        font-size: 20px;
+      }
+
+      &-facebook {
+        margin-bottom: 25px !important;
+      }
+    }
+
+    .register-form {
+      .form-group {
+        margin: 25px 15px;
+      }
+
+      .register-username {
+        margin-top: 35px;
+      }
+
+      .button-cover {
+        margin-top: 10px;
+      }
+    }
+  }
+
+  .login-register-form .form-check-label {
+    justify-content: center;
+    margin-bottom: 0 !important;
+  }
+
+  .login-register-form .form-check-input {
+    margin-right: 0;
+  }
+
+  .login-register-form .font-weight-bold {
+    padding-right: 0 !important;
+  }
+}
+
+@media screen and (max-width: 415px) {
+  .form-check-custom {
+    align-items: center !important;
+
+    .form-check-input {
+      width: 14px;
+      height: 14px;
+      margin-left: 0;
+    }
+
+    a {
+      text-align: center !important;
+      font-size: 15px;
+      white-space: nowrap;
+    }
+
+    .form-check-label {
+      padding-right: 5px;
+    }
+
+    .text-right {
+      text-align: end !important;
+    }
+  }
+
+  .login-register-form .font-weight-bold {
+    margin-top: 2px !important;
+    margin-left: 10px !important;
+    font-size: 15px !important;
+    letter-spacing: -0.5px;
+  }
+}
