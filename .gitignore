@@ -16,3 +16,6 @@ yarn-error.log
 /css
 /public/css
 /public/js 
+/public/images
+/public/img
+/public/fonts
