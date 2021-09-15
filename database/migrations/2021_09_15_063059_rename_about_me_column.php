@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCourseTagsTable extends Migration
+class RenameAboutMeColumn extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateCourseTagsTable extends Migration
      */
     public function up()
     {
-        Schema::create('course_tags', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('course_id');
-            $table->unsignedBigInteger('tag_id');
-            $table->timestamps();
-            $table->softDeletes();
+        Schema::table('users', function (Blueprint $table) {
+            $table->renameColumn('aboutMe', 'about_me');
         });
     }
 
@@ -29,6 +25,8 @@ class CreateCourseTagsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('course_tags');
+        Schema::table('users', function (Blueprint $table) {
+            $table->renameColumn('aboutMe', 'about_me');
+        });
     }
 }

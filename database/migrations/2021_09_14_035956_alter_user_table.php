@@ -19,7 +19,7 @@ class AlterUserTable extends Migration
             $table->date('brithday')->after('phone_number')->nullable();
             $table->string('avatar')->after('brithday')->nullable();
             $table->string('address')->after('avatar')->nullable();
-            $table->text('aboutMe')->after('address')->nullable();
+            $table->text('about_me')->after('address')->nullable();
             $table->softDeletes();
         });
     }
