@@ -37,7 +37,7 @@ $(function () {
  
   $('[data-toggle="popover"]').popover();
 
-  $(".nav-tabs a").on("click", function () {
+  $('.nav-tabs a').on('click', function () {
     $(this).tab('show');
   });
 
@@ -60,7 +60,7 @@ $(function () {
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 
-  $('.navbar-toggler-element').on("click", function () {
+  $('.navbar-toggler-element').on('click', function () {
     if ($('.navbar-toggler-element .fas.fa-bars').hasClass('d-none') && !$('.navbar-toggler-element .fas.fa-times').hasClass('d-none')) {
       $('.navbar-toggler-element .fas.fa-bars').removeClass('d-none');
       $('.navbar-toggler-element .fas.fa-times').addClass('d-none');
