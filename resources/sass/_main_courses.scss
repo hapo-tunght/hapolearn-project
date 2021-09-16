@@ -1,0 +1,168 @@
+.main-courses {
+  .row {
+  padding: 0 50px ;
+  }
+}
+
+.main-courses-item {     
+  &-card {
+    @include main_courses_item_card ;
+  }
+
+}
+
+.main-courses-item-card {
+  .front-end-image {
+    background-color: $background_color_front_end_image;
+    @include common_for_courses_image ;
+  }
+
+  .laravel-image {
+    background-color: $background_color_laravel_image;
+    @include common_for_courses_image ;
+  }
+
+  .php-image {
+    background-color: $background_color_php_image;
+    @include common_for_courses_image ;
+  }
+
+  .card-content-title {
+    @include card_content_title ;
+  }
+
+  .card-content-body {
+    @include card_content_body ;
+    margin-bottom: 0;
+  }
+
+  .courses-button {
+    @include courses-button ;
+  }
+
+  .courses-button:hover {
+    color: $hapo_learn_button_text_hover !important;
+  }
+}
+
+@media screen and (max-width: 2012px) and (min-width: 1600px) {
+  .main-courses {
+    .row {
+      max-width: 62vw;
+    }
+
+    .card-content-body {
+      margin-bottom: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 1300px) and (min-width: 1025px) {
+  .main-courses {
+    .row {
+      padding: 0px !important;
+    }
+  }
+
+  .main-courses-item-card {
+    .card-content-title {
+      font-size: 25px;
+      letter-spacing: -1.5px;
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .main-courses-item {
+    
+    &-card {
+      margin: 0 5px;
+      width: 100%;
+
+      &-content {
+        padding: 0;
+      }
+
+      .custom-image {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .front-end-image {
+        @include common_for_courses_image_media_769px ;
+      }
+
+      .laravel-image {
+        @include common_for_courses_image_media_769px ;
+      }
+
+      .php-image {
+        @include common_for_courses_image_media_769px ;
+      }
+
+      .card-content-title {
+        @include card_content_title_media_769px ;
+      }
+
+      .card-content-body {
+        @include card_content_body_media_769px ;
+      }
+      
+      .courses-button {
+        @include courses-button_media_769px ;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 740px) and (min-width: 576px) {
+  .main-courses {
+    .row {
+      padding: 0;
+    }
+  }
+
+  .main-courses-item-card {
+    .card-content-body {
+      font-size: 12px;
+      letter-spacing: -1px;
+      width: fit-content;
+      overflow: hidden;
+    }
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .main-courses-item {
+    height: 389px;
+    margin: 15px 0px;
+
+    &-card {
+      @include main_courses_item_card_media_575px ;
+
+      .front-end-image {
+        @include common_for_courses_image_media_575px ;
+      }
+
+      .laravel-image {
+        @include common_for_courses_image_media_575px ;
+      }
+
+      .php-image {
+        @include common_for_courses_image_media_575px ;
+      }
+
+      .card-content-title {
+        @include card_content_title_media_575px ;
+      }
+
+      .card-content-body {
+        @include main_courses_card_content_media_575px ;
+      }
+      
+      .courses-button {
+        @include courses-button_media_575px ;
+      }
+    }
+  }
+}
