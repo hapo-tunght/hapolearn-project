@@ -19,4 +19,4 @@ yarn-error.log
 /public/img
 /public/images
 /public/fonts
-/resources/css/*
+resources/css/style.css
