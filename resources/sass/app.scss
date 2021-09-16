@@ -4,15 +4,12 @@
 @import '~@fortawesome/fontawesome-free/scss/regular';
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
-
 // Variables
 @import 'variable';
-
 // Slick
 @import '~slick-carousel/slick/slick.scss';
 @import "~slick-carousel/slick/slick-theme.scss";
-
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
-
+// Sass
 @import 'header', 'hapo_banner', 'main_courses', 'other_courses', 'why_hpl_banner', 'feedback_slider', 'statistic', 'footer', 'login_register' ;
