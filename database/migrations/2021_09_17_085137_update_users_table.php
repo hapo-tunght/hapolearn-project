@@ -25,6 +25,6 @@ class UpdateUsersTable extends Migration
      */
     public function down()
     {
-        
+        $table->dropColumn('name');
     }
 }
