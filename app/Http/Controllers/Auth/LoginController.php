@@ -68,9 +68,7 @@ class LoginController extends Controller
         }
 
         $request->session()->flash('success', 'Welcome to hapolearn!');
-        return $request->wantsJson()
-            ? new JsonResponse([], 204)
-            : redirect()->intended($this->redirectPath());
+        return $request->wantsJson() ? new JsonResponse([], 204) : redirect()->intended($this->redirectPath());
     }
     /**
      * The user has logged out of the application.
