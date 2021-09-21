@@ -20,11 +20,13 @@
 </head>
 <body>
     <main>
+        <div>
+            @include('alert.alerts')
+        </div>
         @include('layouts.header')
         @yield('content')
         @include('layouts.footer')
     </main>
     <script src="{{ asset('js/app.js') }}" defer></script>
-   
 </body>
 </html>

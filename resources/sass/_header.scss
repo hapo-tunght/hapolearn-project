@@ -35,16 +35,26 @@
       font-size: 16px;
       padding-right: 7vw;
     }
+    
+    .nav-item {
+      height: 37px;
+    }
   }
 }
 
 .navbar-nav {
   .nav-item {
+    .dropdown-menu {
+      font-size: 15px;
+      min-width: 118px !important;
+      border: 0 !important;
+    }
+
     .navbar-link-element {
       text-align: center;
       width: 93%;
       color: $text_navbar_color;
-      margin: 7px 8px;
+      margin: 0 8px;
       padding: 6.5px 10px;
       white-space: nowrap;
     }
