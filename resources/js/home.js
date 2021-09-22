@@ -106,4 +106,9 @@ $(function () {
   setTimeout(function () {
     $('.success-msg').fadeOut('fast');
   }, 3000);
+
+  $('#logout-button').on('click', function (event) {
+    event.preventDefault();
+    $('#logout-form').submit();
+  });
 });

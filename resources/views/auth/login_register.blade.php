@@ -1,4 +1,3 @@
-<!-- Login/Register form -->
 <div class="login-register-form modal fade p-0" id="login-register-modal">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content modal-content-custom border-0">

@@ -21,7 +21,7 @@
 <body>
     <main>
         <div>
-            @include('alert.alerts')
+            @include('components.alerts')
         </div>
         @include('layouts.header')
         @yield('content')
