@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\WelcomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +17,7 @@ use App\Http\Controllers\WelcomeController;
 
 
 
-Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Auth::routes();
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+
