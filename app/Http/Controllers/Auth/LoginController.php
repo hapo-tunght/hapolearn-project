@@ -50,24 +50,4 @@ class LoginController extends Controller
     {
         return 'username';
     }
-
-    /**
-     * Send the response after the user was authenticated.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
-     */
-    protected function sendLoginResponse(Request $request)
-    {
-        $request->session()->regenerate();
-
-        $this->clearLoginAttempts($request);
-
-        if ($response = $this->authenticated($request, $this->guard()->user())) {
-            return $response;
-        }
-
-        $request->session()->flash('success', 'Welcome to hapolearn!');
-        return $request->wantsJson() ? new JsonResponse([], 204) : redirect('/');
-    }
 }
