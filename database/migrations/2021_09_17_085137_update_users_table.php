@@ -15,6 +15,7 @@ class UpdateUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('name')->nullable()->change();
+            $table->integer('role')->after('email')->default(0)->comment('2: admin, 1: teacher, 0: student');
         });
     }
 
@@ -27,6 +28,7 @@ class UpdateUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('name');
+            $table->dropColumn('role');
         });
     }
 }
