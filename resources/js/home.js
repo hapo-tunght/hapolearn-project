@@ -87,4 +87,28 @@ $(function () {
       $('footer').removeClass('d-none');
     }
   });
+
+  if ($('#register-tab input').hasClass('is-invalid')) {
+    $('#login-register-modal').modal('show');
+    $('#register-nav-tab').trigger('click');
+  }
+  if ($('#login-tab input').hasClass('is-invalid')) {
+    $('#login-register-modal').modal('show');
+    $('#login-nav-tab').trigger('click');
+  }
+
+  $('.close-tab').on("click", function () {
+    $("#login-register input").removeClass("is-invalid");
+    $("#login-register input").val("");
+    $('.login-tab').hide();
+  });
+
+  setTimeout(function () {
+    $('.success-msg').fadeOut('fast');
+  }, 3000);
+
+  $('#logout-button').on('click', function (event) {
+    event.preventDefault();
+    $('#logout-form').submit();
+  });
 });
