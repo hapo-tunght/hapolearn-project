@@ -9,7 +9,9 @@
 // Slick
 @import '~slick-carousel/slick/slick.scss';
 @import "~slick-carousel/slick/slick-theme.scss";
+// Select2
+@import '~select2/src/scss/core.scss';
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import '~bootstrap/scss/bootstrap.scss';
 // Sass
-@import 'header', 'hapo_banner', 'main_courses', 'other_courses', 'why_hpl_banner', 'feedback_slider', 'statistic', 'footer', 'login_register' ;
+@import 'header', 'hapo_banner', 'main_courses', 'other_courses', 'why_hpl_banner', 'feedback_slider', 'statistic', 'footer', 'login_register', 'all_courses' ;
