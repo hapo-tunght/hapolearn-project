@@ -22,7 +22,11 @@ class CourseFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => $this->faker->name(),
+            'logo_path' => $this->faker->imageUrl(),
+            'description' => $this->faker->realText(),
+            'price' => mt_rand(100, 300),
+            'learn_times' => mt_rand(100, 1000),
         ];
     }
 }

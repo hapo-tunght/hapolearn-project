@@ -1,0 +1,295 @@
+.all-course-page {
+  background-color: $input_color;
+}
+
+.filter-form {
+  font-family:  $font_Open_Sans;
+  font-weight: bold;
+
+  .filter-button {
+    width: 100px;
+    height: 40px;
+    background: $white_color;
+    border: 1px solid $input_solid_color;
+    border-radius: 5px;
+    margin: 0 15px;
+  }
+}
+
+.search-form {
+  font-family:  $font_Open_Sans;
+  font-weight: 500;
+
+  .form-outline {
+    width: 355px;
+    margin-right: 15px;
+    position: relative;
+
+    .form-control-search {
+      color: $black_color;
+      border: 1px solid $input_solid_color;
+      border-radius: 5px;
+    }
+
+    .form-control-search::placeholder {
+      font-weight: 500;
+      opacity: 0.5;
+    }
+
+    .fa-search {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+    }
+  }
+
+  .btn {
+    background: $button_color;
+    color: $white_color;
+    border-radius: 7px;
+    border: none;
+    font-size: 18px;
+  }
+
+  .btn:hover {
+    color:$hapo_learn_quote;
+  }
+}
+
+.filter-collapse {
+  .filter-collapse-body {
+    background: $white_color;
+    border: 1px solid $input_solid_color;
+    border-radius: 5px;
+    padding-top: 13px;
+    margin: 0 15px;
+  }
+  
+  .filter-subtitle {
+    text-align: center;
+    line-height: 33px;
+    font-weight: bold;
+    font-size: 16px;
+    color: $text_navbar_color;
+  }
+
+  .reset-filter {
+    width: 70px;
+    height: 30px;
+    background: $button_color;
+    border: 1px solid $button_color;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+
+    &:hover {
+      color: $text_navbar_color;
+    }
+
+    &:focus {
+      background-color: 1px solid $button_hover_color;
+    }
+  }
+
+  .form-control.form-control-custom {
+    color: $black_color !important;
+    opacity: 0.8 !important;
+  }
+}
+
+.newest-oldest-radio input[type="radio"] {
+  opacity: 0;
+  position: fixed;
+  width: 0;
+}
+
+.newest-oldest-radio label {
+  display: inline-block;
+  background-color: $button_oldest_newest;
+  font-size: 14px;
+  border-radius: 2px;
+  font-weight: bold;
+  font-family: sans-serif;
+  width: 83px;
+  padding: 7px 5px 7px 5px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.newest-oldest-radio label:hover {
+  color: $button_color;
+}
+
+.newest-oldest-radio input[type="radio"]:checked + label {
+  background-color: $button_color;
+  color: white;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  line-height: 34px;
+  font-size: 16px;
+  opacity: 0.8;
+}
+.select2-container .select2-selection--single {
+  height: 34px !important;
+}
+.select2-selection__arrow {
+  height: 34px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+  background-image: url(../assets/img/dropdown_arrow.png);
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-size: contain;
+  border: none;
+  height: 10px;
+  width: 12px;
+  top: auto;
+  left: auto;
+  margin-top: 13px;
+  margin-left: 3px;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+  text-align: center;
+  padding-left: 0;
+}
+
+.list-courses {
+  .customize-list-courses-card {
+    background: white;
+    border: 1px solid $customize_list_courses_card_border;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 6px $box_shadow_color_black;
+    border-radius: 8px;
+    font-family: $font_UTM_BryantLG;
+  }
+
+  .course-card-top {
+    display: flex;
+  }
+
+  .course-card-top-img {
+    height: 90px;
+    width: 90px;
+    border-radius: 50%;
+    margin-right: 25px;
+    object-fit: fill;
+  }
+
+  .course-card-top-content-title {
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 31px;
+    letter-spacing: -0.05em;
+    color: $text_color_card_content;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+  }
+
+  .course-card-top-content-description {
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 25px;
+    letter-spacing: -0.05em;
+    color: $text_color_card_content;
+    height: 100px;
+    margin-top: 13px;
+    margin-bottom: 13px;
+    padding-right: 43px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    -webkit-text-stroke-width: 0.5px;
+  }
+
+  .button-more {
+    background: $button_color;
+    box-shadow: inset 0px 2px 4px $course_box_shadow_color;
+    border-radius: 22px;
+    width: 106px;
+    height: 42px;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: -0.05em;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: right;
+    cursor: pointer;
+    text-decoration: none;
+
+    &:hover {
+      color: $text_color_card_content;
+    }
+  }
+
+  .course-card-bottom {
+    height: 75px;
+    border-top: 1px solid $customize_list_courses_card_border;
+    margin-top: 26px;
+  }
+
+  .course-card-bottom-subtitle {
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 31px;
+    letter-spacing: -0.05em;
+    color: $text_color_card_content;
+  }
+
+  .course-card-bottom-number {
+    font-weight: bold;
+    font-size: 26px;
+    line-height: 37px;
+    letter-spacing: -0.05em;
+    color: $button_color;
+    -webkit-text-stroke-width: 1.2px;
+  }
+}
+
+.pagination {
+  .page-item {
+    margin: 0 2.5px;
+
+    .page-link {
+      width: 40px;
+      height:40px;
+      border: 1px solid $button_color;
+      border-radius: 3px;
+      text-align: center;
+      padding: 7.5px 0;
+      color: $button_color;
+      font-size: 19px;
+      font-weight: 600;
+    }
+
+    .arrow {
+      width: 50px;
+    }
+  }
+
+  .page-item.active {
+    .page-link {
+      background: $button_color;
+      color: $white_color;
+    }
+  }
+
+  .page-item.disabled {
+    .page-link.arrow {
+      background: $button_color;
+      color: $white_color;
+    }
+  }
+}
