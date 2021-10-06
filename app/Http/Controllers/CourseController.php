@@ -29,17 +29,19 @@ class CourseController extends Controller
         return view('courses.index', compact('courses', 'teachers', 'tags'));
     }
 
-    public function courseDetail($courseId) {
+    public function courseDetail($courseId)
+    {
         $course = Course::find($courseId);
         $lessons = $course->lessons;
         $teachers = $course->teachers;
         $tags = $course->tags;
         $otherCourses = Course::inRandomOrder()->limit(5)->get();
         $haveNotJoinedCourse = is_null(CourseUser::query()->checkJoinedCourse($courseId)->first());
-        return view('courses.detail', compact('course', 'courseId', 'lessons','teachers', 'otherCourses', 'tags', 'haveNotJoinedCourse'));
+        return view('courses.detail', compact('course', 'courseId', 'lessons', 'teachers', 'otherCourses', 'tags', 'haveNotJoinedCourse'));
     }
 
-    public function courseJoin($courseId) {
+    public function courseJoin($courseId)
+    {
         $course = Course::find($courseId);
         $course->users()->attach(Auth::id(), ['created_at' => Carbon::now()]);
         return redirect()->route('courses.detail', [$courseId]);

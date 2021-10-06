@@ -16,7 +16,7 @@ class CourseUser extends Model
         'course_id', 'user_id'
     ];
 
-    public function scopeCheckJoinedCourse($query, $courseId) 
+    public function scopeCheckJoinedCourse($query, $courseId)
     {
         $query->where([
             ['user_id', '=', Auth::id()],

@@ -31,7 +31,7 @@ class Lesson extends Model
     }
 
     public function scopeSearch($query, $data, $courseId)
-    {   
+    {
         $query->where([
             ['course_id', '=', $courseId],
             ['title', 'LIKE', '%' . $data['keyword'] . '%']
