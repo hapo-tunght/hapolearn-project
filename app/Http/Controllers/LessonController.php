@@ -11,7 +11,7 @@ use App\Models\Tag;
 
 class LessonController extends Controller
 {
-    public function lessonSearch(Request $request, $courseId)
+    public function search(Request $request, $courseId)
     {
         $data = $request->all();
         $course = Course::find($courseId);

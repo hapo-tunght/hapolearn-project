@@ -20,7 +20,7 @@ class CourseController extends Controller
         return view('courses.index', compact('courses', 'teachers', 'tags'));
     }
 
-    public function courseSearch(Request $request)
+    public function search(Request $request)
     {
         $data = $request->all();
         $courses = Course::filter($data)->paginate(config('config.pagination'));
@@ -29,7 +29,7 @@ class CourseController extends Controller
         return view('courses.index', compact('courses', 'teachers', 'tags'));
     }
 
-    public function courseDetail($courseId)
+    public function detail($courseId)
     {
         $course = Course::find($courseId);
         $lessons = $course->lessons;
@@ -40,14 +40,14 @@ class CourseController extends Controller
         return view('courses.detail', compact('course', 'courseId', 'lessons', 'teachers', 'otherCourses', 'tags', 'haveNotJoinedCourse'));
     }
 
-    public function courseJoin($courseId)
+    public function join($courseId)
     {
         $course = Course::find($courseId);
         $course->users()->attach(Auth::id(), ['created_at' => Carbon::now()]);
         return redirect()->route('courses.detail', [$courseId]);
     }
 
-    public function courseLeave($courseId)
+    public function leave($courseId)
     {
         $course = Course::find($courseId);
         $course->users()->detach(Auth::id());
