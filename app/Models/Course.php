@@ -41,6 +41,11 @@ class Course extends Model
         return $this->users()->where('role', config('config.role.student'))->count();
     }
 
+    public function getTeachersAttribute()
+    {
+        return $this->users()->where('role', config('config.role.teacher'))->get();
+    }
+
     public function getNumberLessonAttribute()
     {
         return $this->lessons()->count();
@@ -50,11 +55,20 @@ class Course extends Model
     {
         return $this->lessons()->sum('learn_time');
     }
+    public function getLessonsAttribute()
+    {
+        return $this->lessons()->paginate(config('config.pagination'));
+    }
+
+    public function getTagsAttribute()
+    {
+        return $this->tags()->inRandomOrder()->limit(2)->get();
+    }
 
     public function scopeFilter($query, $data)
     {
         if (isset($data['keyword'])) {
-            $query->where('title', 'LIKE', '%'.$data['keyword'].'%')->orWhere('description', 'LIKE', '%'. $data['keyword'] .'%');
+            $query->where('title', 'LIKE', '%'. $data['keyword'].'%')->orWhere('description', 'LIKE', '%'.$data['keyword'].'%');
         }
 
         if (isset($data['status'])) {
@@ -72,13 +86,12 @@ class Course extends Model
                 $query->withCount('lessons')->orderByDesc('lessons_count');
             }
         }
-
+        
         if (isset($data['teacher'])) {
             $query->whereHas('users', function ($subquery) use ($data) {
                 $subquery->where('user_id', $data['teacher']);
             });
         }
-
         if (isset($data['tag'])) {
             $query->whereHas('tags', function ($subquery) use ($data) {
                 $subquery->where('tag_id', $data['tag']);

@@ -4,10 +4,10 @@
             <div class="course-card-top">
                 <img src="{{ $course->logo_path }}" alt="course img" class="course-card-top-img">
                 <div class="course-card-top-content">
-                    <a href="#" class="course-card-top-content-title">{{ $course->title }}</a>
+                    <a href="{{route('courses.detail', ['courseId' => $course->id])}}" class="course-card-top-content-title">{{ $course->title }}</a>
                     <div class="course-card-top-content-description">{{ $course->description }}</div>
                     <div>
-                        <a href="#" class="button-more">More</a>
+                        <a href="{{route('courses.detail', ['courseId' => $course->id])}}" class="button-more">More</a>
                     </div>
                 </div>
             </div>
