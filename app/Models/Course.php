@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 
 class Course extends Model
 {
@@ -41,7 +42,7 @@ class Course extends Model
         return $this->users()->where('role', config('config.role.student'))->count();
     }
 
-    public function getTeachersAttribute()
+    public function getTeachersOfCourseAttribute()
     {
         return $this->users()->where('role', config('config.role.teacher'))->get();
     }
@@ -65,6 +66,11 @@ class Course extends Model
         return $this->tags()->inRandomOrder()->limit(2)->get();
     }
 
+    public function getCheckJoinedCourseAttribute()
+    {
+        return $this->users()->where('user_id', Auth::id())->first();    
+    }
+
     public function scopeFilter($query, $data)
     {
         if (isset($data['keyword'])) {
@@ -86,12 +92,13 @@ class Course extends Model
                 $query->withCount('lessons')->orderByDesc('lessons_count');
             }
         }
-        
+
         if (isset($data['teacher'])) {
             $query->whereHas('users', function ($subquery) use ($data) {
                 $subquery->where('user_id', $data['teacher']);
             });
         }
+
         if (isset($data['tag'])) {
             $query->whereHas('tags', function ($subquery) use ($data) {
                 $subquery->where('tag_id', $data['tag']);
@@ -113,7 +120,6 @@ class Course extends Model
                 $query->withSum('lessons', 'learn_time')->orderByDesc('lessons_sum_learn_time');
             }
         }
-
         return $query;
     }
 }

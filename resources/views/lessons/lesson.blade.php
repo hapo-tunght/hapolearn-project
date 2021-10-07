@@ -1,6 +1,6 @@
 <div class="list-lesson-items">
     <div class="row h-100">
-        @if (isset($haveNotJoinedCourse) && $haveNotJoinedCourse)
+        @if (empty($course->checkJoinedCourse) == true)
             <div class="col-md-12 d-flex align-items-center">
                 <a href="" class="lesson-items-title">
                     {{ ($lessons->currentPage() - 1)*config('config.pagination') + $key + 1 }}. {{ $lesson->title }}
@@ -15,7 +15,6 @@
             <div class="col-md-3 d-flex justify-content-center align-items-center">
                 <a class="learn-lesson-button">Learn</a>
             </div>
-        @endif
-        
+        @endif        
     </div>
 </div>

@@ -14,4 +14,6 @@ return [
     'asc' => 'asc',
     'desc' => 'desc',
   ],
+
+  'numberOfOtherCourses' => 5,
 ];

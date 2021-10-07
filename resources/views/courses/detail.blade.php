@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    @include('direction', [$courseId])
+    @include('direction', [$course->id])
     <div class="detail-course container-fluid bg-light">
         <div class="container p-0">
             <div class="row">
@@ -42,28 +42,27 @@
                                 <div class="tab-content-lessons">
                                     <div class="form-search-lesson w-100 d-flex align-items-center">
                                         <div class="input-group col-md-6 d-flex">                                            
-                                            <form action="{{route('lessons.search', [$courseId])}}" method="GET" class="d-flex">
+                                            <form action="{{route('course.show', [$course->id])}}" method="GET" class="d-flex">
                                                 <div class="form-outline d-flex">
-                                                    <input type="text" id="form-search" name="keyword" class="form-control form-control-search w-100" placeholder="Search..."/>
+                                                    <input type="text" id="form-search" name="keyword_lesson" class="form-control form-control-search w-100" placeholder="Search..."/>
                                                     <i class="fas fa-search"></i>
                                                 </div>
                                                 <button type="submit" class="btn">Search</button>
                                             </form>          
                                         </div>
                                         <div class="col-md-6 d-flex justify-content-center">
-                                            @if (isset($haveNotJoinedCourse) && $haveNotJoinedCourse) 
-                                                <form action="{{route('courses.join', [$courseId])}}" method="GET">
-                                                    @csrf
-                                                    <button type="submit" class="btn join-this-course-button">Join this course</button>
-                                                </form>
+                                            @if (empty($course->checkJoinedCourse) == false)
+                                                <button type="" class="joined-course">Joined</button>  
                                             @else
-                                            <button type="" class="joined-course">Joined</button>                                                
+                                                <form action="{{route('courses.join', [$course->id])}}" method="GET">
+                                                    <button type="submit" class="btn join-this-course-button">Join this course</button>
+                                                </form>                                                
                                             @endif
                                         </div>
                                     </div>
                                     <div class="show-list-lessons">
                                         @foreach ($lessons as $key => $lesson)
-                                            @include('lessons.lesson', [$key, $lesson, $courseId])
+                                            @include('lessons.lesson', [$key, $lesson])
                                         @endforeach
                                         <div class="pagination-custom container mt-3 pr-4 d-flex justify-content-end">
                                             {!! $lessons->appends($_GET)->links() !!}
@@ -75,7 +74,7 @@
                                 <div class="main-teacher">
                                     <div class="title">Main Teachers</div>
                                     <div class="list-teacher">
-                                        @foreach ($teachers as $teacher)
+                                        @foreach ($course->teachers_of_course as $teacher)
                                             @include('users.teacher', $teacher)
                                         @endforeach
                                     </div>
@@ -107,7 +106,7 @@
                                 <i class="fas fa-tags"></i>
                                 <div class="ml-2 subject">Tag</div>
                                 <div class="ml-2">:</div>
-                                @foreach ($tags as $tag)
+                                @foreach ($course->tags as $tag)
                                     <div class="ml-2">#</div>
                                     <a href="#" class="random-tag-name">{{ $tag->name }}</a>                                
                                 @endforeach
@@ -118,9 +117,9 @@
                                 <div class="ml-2">:  free</div>
                             </div>
                             
-                            @if (isset($haveNotJoinedCourse) && $haveNotJoinedCourse == false)
+                            @if (empty($course->checkJoinedCourse) == false)
                                 <div class="data leave-this-course d-flex justify-content-center align-items-center d-none">
-                                    <form action="{{route('courses.leave', [$courseId])}}" method="GET">
+                                    <form action="{{route('courses.leave', [$course])}}" method="GET">
                                         @csrf
                                         <button type="submit" class="btn leave-this-course-button">Leave this course</button>
                                     </form>
@@ -136,7 +135,7 @@
                                 <div class="other-course-list mt-2">
                                     @foreach ($otherCourses as $key => $otherCourse)
                                         <div class="other-course-item d-flex align-items-center">
-                                            <a href="{{route('courses.detail', ['courseId' => $otherCourse->id])}}">
+                                            <a href="{{route('course.show', ['course' => $otherCourse->id])}}">
                                                 {{ $key + 1 }}. {{ $otherCourse->title }}
                                             </a>                                        
                                         </div>                 
