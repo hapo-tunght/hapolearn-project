@@ -33,8 +33,8 @@ class CourseController extends Controller
     public function show(Request $request, Course $course)
     {
         $data = $request->all();
-        $join= $course->check_joined_course;
-        $check = empty($course->check_joined_course);      
+        $join = $course->check_joined_course;
+        $check = empty($course->check_joined_course);
         $lessons = Lesson::search($data, $course)->paginate(config('config.pagination'));
         $otherCourses = Course::inRandomOrder()->limit(config('config.numberOfOtherCourses'))->get();
         return view('courses.detail', compact('course', 'lessons', 'otherCourses'));

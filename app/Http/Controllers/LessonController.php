@@ -11,5 +11,5 @@ use App\Models\Tag;
 
 class LessonController extends Controller
 {
-    // 
+    //
 }

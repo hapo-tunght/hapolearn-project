@@ -68,7 +68,7 @@ class Course extends Model
 
     public function getCheckJoinedCourseAttribute()
     {
-        return $this->users()->where('user_id', Auth::id())->first();    
+        return $this->users()->where('user_id', Auth::id())->first();
     }
 
     public function scopeFilter($query, $data)

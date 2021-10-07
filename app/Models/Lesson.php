@@ -35,8 +35,7 @@ class Lesson extends Model
         if (isset($data['keyword_lesson'])) {
             $query->where('course_id', $course->id)
             ->andWhere('title', 'LIKE', '%' . $data['keyword_lesson'] . '%');
-        }
-        else {
+        } else {
             $query->where('course_id', $course->id);
         }
         return $query;
