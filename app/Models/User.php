@@ -28,6 +28,7 @@ class User extends Authenticatable
         'avatar',
         'address',
         'about_me',
+        'role',
     ];
 
     /**
@@ -56,7 +57,7 @@ class User extends Authenticatable
      */
     public function courses()
     {
-        return $this->belongsToMany(Course::class, 'course_users', 'user_id', 'course_id');
+        return $this->belongsToMany(Course::class, 'course_users', 'user_id', 'course_id')->withTimestamps();
     }
 
     /**
@@ -77,5 +78,10 @@ class User extends Authenticatable
     public function reviews()
     {
         return $this->hasMany(Review::class, 'user_id');
+    }
+
+    public function scopeTeachers($query)
+    {
+        $query->where('role', config('config.role.teacher'));
     }
 }

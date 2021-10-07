@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Builder;
 
 class Course extends Model
 {
@@ -27,11 +28,79 @@ class Course extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'course_users', 'user_id', 'course_id');
+        return $this->belongsToMany(User::class, 'course_users', 'course_id', 'user_id')-> withTimestamps();
     }
 
     public function tags()
     {
-        return $this->belongsToMany(Tag::class, 'course_tags', 'tag_id', 'course_id');
+        return $this->belongsToMany(Tag::class, 'course_tags', 'course_id', 'tag_id')->withTimestamps();
+    }
+
+    public function getNumberStudentAttribute()
+    {
+        return $this->users()->where('role', config('config.role.student'))->count();
+    }
+
+    public function getNumberLessonAttribute()
+    {
+        return $this->lessons()->count();
+    }
+
+    public function getTotalTimeAttribute()
+    {
+        return $this->lessons()->sum('learn_time');
+    }
+
+    public function scopeFilter($query, $data)
+    {
+        if (isset($data['keyword'])) {
+            $query->where('title', 'LIKE', '%'.$data['keyword'].'%')->orWhere('description', 'LIKE', '%'. $data['keyword'] .'%');
+        }
+
+        if (isset($data['status'])) {
+            if ($data['status'] == config('config.options.newest')) {
+                $query->orderBy('id');
+            } else {
+                $query->orderByDesc('id');
+            }
+        }
+
+        if (isset($data['number_of_lesson'])) {
+            if ($data['number_of_lesson'] == config('config.options.asc')) {
+                $query->withCount('lessons')->orderBy('lessons_count');
+            } else {
+                $query->withCount('lessons')->orderByDesc('lessons_count');
+            }
+        }
+
+        if (isset($data['teacher'])) {
+            $query->whereHas('users', function ($subquery) use ($data) {
+                $subquery->where('user_id', $data['teacher']);
+            });
+        }
+
+        if (isset($data['tag'])) {
+            $query->whereHas('tags', function ($subquery) use ($data) {
+                $subquery->where('tag_id', $data['tag']);
+            });
+        }
+
+        if (isset($data['number_of_learner'])) {
+            if ($data['number_of_learner'] == config('config.options.asc')) {
+                $query->withCount('users')->orderBy('users_count');
+            } else {
+                $query->withCount('users')->orderByDesc('users_count');
+            }
+        }
+
+        if (isset($data['total_time'])) {
+            if ($data['total_time'] == config('config.options.asc')) {
+                $query->withSum('lessons', 'learn_time')->orderBy('lessons_sum_learn_time');
+            } else {
+                $query->withSum('lessons', 'learn_time')->orderByDesc('lessons_sum_learn_time');
+            }
+        }
+
+        return $query;
     }
 }

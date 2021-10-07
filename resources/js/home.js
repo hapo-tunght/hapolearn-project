@@ -74,8 +74,8 @@ $(function () {
     }
   });
 
-  $('.navbar-light .navbar-nav .nav-link').on('click', function () {
-    $('.navbar-light .navbar-nav .nav-link').removeClass('active');
+  $('.navbar .navbar-nav .nav-link').on('click', function () {
+    $('.navbar .navbar-nav .nav-link').removeClass('active');
     $(this).addClass('active');
 
     if ($('.navbar-collapse-element').hasClass('show')) {
@@ -86,5 +86,29 @@ $(function () {
       $('#body').removeClass('d-none');
       $('footer').removeClass('d-none');
     }
+  });
+
+  if ($('#register-tab input').hasClass('is-invalid')) {
+    $('#login-register-modal').modal('show');
+    $('#register-nav-tab').trigger('click');
+  }
+  if ($('#login-tab input').hasClass('is-invalid')) {
+    $('#login-register-modal').modal('show');
+    $('#login-nav-tab').trigger('click');
+  }
+
+  $('.close-tab').on('click', function () {
+    $('#login-register input').removeClass('is-invalid');
+    $('#login-register input').val('');
+    $('.login-tab').hide();
+  });
+
+  setTimeout(function () {
+    $('.success-msg').fadeOut('fast');
+  }, 3000);
+
+  $('#logout-button').on('click', function (event) {
+    event.preventDefault();
+    $('#logout-form').submit();
   });
 });
