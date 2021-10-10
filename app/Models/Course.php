@@ -66,6 +66,11 @@ class Course extends Model
         return $this->tags()->inRandomOrder()->limit(2)->get();
     }
 
+    public function getAllTagsAttribute()
+    {
+        return $this->tags()->inRandomOrder()->get();
+    }
+
     public function getCheckJoinedCourseAttribute()
     {
         return $this->users()->where('user_id', Auth::id())->first();

@@ -21,52 +21,39 @@
                     <div class="course-detail-content">
                             <!-- Nav tabs -->
                         <ul class="tab-bar nav nav-pills d-flex align-items-center" id="pills-tab" role="tablist">
-                            <li class="nav-item col-md-2" role="presentation">
-                                <a class="nav-link active d-flex align-items-center" id="pills-lessons-tab" data-toggle="pill" href="#pills-lessons" role="tab" aria-controls="pills-lessons" aria-selected="true">
-                                    <p class="m-0">Lessons</p>
+                            <li class="nav-item col-md-" role="presentation">
+                                <a class="nav-link d-flex align-items-center" id="pills-lessons-tab" data-toggle="pill" href="#pills-descriptions" role="tab" aria-controls="pills-lessons" aria-selected="true">
+                                    <p class="m-0">Descriptions</p>
                                 </a>
                             </li>
-                            <li class="nav-item col-md-2" role="presentation">
+                            <li class="nav-item col-md-3" role="presentation">
+                                <a class="nav-link active text-center d-flex align-items-center" id="pills-documents-tab" data-toggle="pill" href="#pills-documents" role="tab" aria-controls="pills-documents" aria-selected="false">
+                                    <p class="m-0">Documents</p>
+                                </a>
+                            </li>
+                            <li class="nav-item col-md-3" role="presentation">
                                 <a class="nav-link text-center d-flex align-items-center" id="pills-teacher-tab" data-toggle="pill" href="#pills-teacher" role="tab" aria-controls="pills-teacher" aria-selected="false">
                                     <p class="m-0">Teachers</p>
                                 </a>
                             </li>
-                            <li class="nav-item col-md-2" role="presentation">
-                                <a class="nav-link text-center d-flex align-items-center" id="pills-reviews-tab" data-toggle="pill" href="#pills-reviews" role="tab" aria-controls="pills-reviews" aria-selected="false">
-                                    <p class="m-0">Reviews</p>
-                                </a>
-                            </li>
                         </ul>
                         <div class="tab-content" id="pills-tabContent">
-                            <div class="tab-pane fade show active" id="pills-lessons" role="tabpanel" aria-labelledby="pills-lessons-tab">
-                                <div class="tab-content-lessons">
-                                    <div class="form-search-lesson w-100 d-flex align-items-center">
-                                        <div class="input-group col-md-6 d-flex">                                            
-                                            <form action="{{route('course.show', [$course->id])}}" method="GET" class="d-flex">
-                                                <div class="form-outline d-flex">
-                                                    <input type="text" id="form-search" name="keyword_lesson" class="form-control form-control-search w-100" placeholder="Search..."/>
-                                                    <i class="fas fa-search"></i>
-                                                </div>
-                                                <button type="submit" class="btn">Search</button>
-                                            </form>          
-                                        </div>
-                                        <div class="col-md-6 d-flex justify-content-center">
-                                            @if (empty($course->checkJoinedCourse) == false)
-                                                <button type="" class="joined-course">Joined</button>  
-                                            @else
-                                                <form action="{{route('courses.join', [$course->id])}}" method="GET">
-                                                    <button type="submit" class="btn join-this-course-button" id="join-this-course-button">Join this course</button>
-                                                </form>                                                
-                                            @endif
-                                        </div>
+                            <div class="tab-pane fade" id="pills-descriptions" role="tabpanel" aria-labelledby="pills-lessons-tab">
+                                <div class="tab-content-descriptions">
+                                    <div class="description d-flex flex-column">
+                                        <div class="description-title">Descriptions lesson</div>
+                                        <div class="description-content">{{ $lesson->description }}</div>
                                     </div>
-                                    <div class="show-list-lessons">
-                                        @foreach ($lessons as $key => $lesson)
-                                            @include('lessons.lesson', [$key, $lesson])
+                                    <div class="requirements d-flex flex-column">
+                                        <div class="description-title">Requirements</div>
+                                        <div class="description-content">{{ $lesson->requirement }}</div>
+                                    </div>
+                                    <div class="lesson-tag d-flex">
+                                        <div>Tag:</div>
+                                        @foreach ($course->all_tags as $tag)
+                                            <div class="ml-2">#</div>
+                                            <a href="" class="tag">{{ $tag->name }}</a>
                                         @endforeach
-                                        <div class="pagination-custom container mt-3 pr-4 d-flex justify-content-end">
-                                            {!! $lessons->appends($_GET)->links() !!}
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -80,7 +67,38 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="pills-reviews" role="tabpanel" aria-labelledby="pills-reviews-tab">...</div>
+                            <div class="tab-pane fade show active" id="pills-documents" role="tabpanel" aria-labelledby="pills-documents-tab">
+                                <div class="documents">
+                                    <div class="title d-flex align-items-center">
+                                        <p class="m-0 col-md-6">Documents</p>
+                                        <div class="col-md-2"></div>
+                                        <div class="progress progress-document col-md-4 p-0 mt-3">
+                                            <div id="progress-bar-document" class="progress-bar"
+                                            style="width: {{$lesson->progress . '%'}};" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{$lesson->progress . '%'}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="show-list-documents d-flex flex-column">
+                                        @foreach ($lesson->documents as $document)
+                                            <div class="show-document-item">
+                                                <div class="row">
+                                                    <div class="document-logo col-md-1 pr-0 d-flex justify-content-end">
+                                                        <img src="{{ asset($document->logo_path) }}" alt="doc-logo">
+                                                    </div>
+                                                    <div class="document-type col-md-1 d-flex align-items-center">
+                                                        <p class="m-0">{{ $document->type }}</p>
+                                                    </div>
+                                                    <div class="col-md-8 d-flex align-items-center">
+                                                        <a class="document-name" href="{{ asset($document->file_path) }}" data-lesson-id="{{ $lesson->id }}" data-document-id="{{ $document->id }}" target="_blank">{{ $document->name }}</a>
+                                                    </div>
+                                                    <div class="preview col-md-2">
+                                                        <a class="preview-button btn h-100" href="{{ asset($document->file_path) }}" data-lesson-id="{{ $lesson->id }}" data-document-id="{{ $document->id }}" target="_blank">Preview</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -90,17 +108,17 @@
                             <div class="data learners-data d-flex align-items-center">
                                 <i class="fas fa-users"></i>
                                 <div class="ml-2 subject">Learners</div>
-                                <div class="ml-2">:  {{$course->number_student}}</div>
+                                <div class="ml-2">:  {{ $course->number_student }}</div>
                             </div>
                             <div class="data lessons-data d-flex align-items-center">
                                 <i class="fas fa-file-code"></i>
                                 <div class="ml-2 subject">Lessons</div>
-                                <div class="ml-2">:  {{$course->number_lesson}} lesson</div>
+                                <div class="ml-2">:  {{ $course->number_lesson }} lesson</div>
                             </div>
                             <div class="data times-data d-flex align-items-center">
                                 <i class="far fa-clock"></i>
                                 <div class="ml-2 subject">Times</div>
-                                <div class="ml-2">:  {{$course->total_time}} hours</div>
+                                <div class="ml-2">:  {{ $course->total_time }} hours</div>
                             </div>
                             <div class="data tags-data d-flex align-items-center">
                                 <i class="fas fa-tags"></i>
@@ -117,7 +135,7 @@
                                 <div class="ml-2">:  free</div>
                             </div>
                             
-                            @if (empty($course->checkJoinedCourse) == false)
+                            @if (empty($course->check_joined_course) == false)
                                 <div class="data leave-this-course d-flex justify-content-center align-items-center d-none">
                                     <form action="{{route('courses.leave', [$course])}}" method="GET">
                                         @csrf
