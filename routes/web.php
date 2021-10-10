@@ -29,7 +29,7 @@ Route::get('/course/search', [CourseController::class, 'search'])->name('course.
 Route::get('courses/detail/{course}', [CourseController::class, 'show'])->name('course.show');
 Route::get('courses/detail/{course}/search', [LessonController::class, 'search'])->name('lessons.search');
 
-Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => 'auth'], function () {
     Route::get('courses/detail/{course}/join', [CourseController::class, 'join'])->name('courses.join');
     Route::get('courses/detail/{course}/leave', [CourseController::class, 'leave'])->name('courses.leave');
     Route::get('courses/detail/{course}/{lesson}', [LessonController::class, 'show'])->name('lesson.show');

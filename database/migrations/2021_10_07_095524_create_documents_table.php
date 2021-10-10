@@ -21,7 +21,7 @@ class CreateDocumentsTable extends Migration
             $table->string('logo_path');
             $table->string('file_path');
             $table->timestamps();
-            $table->softDeletes();;
+            $table->softDeletes();
         });
     }
 

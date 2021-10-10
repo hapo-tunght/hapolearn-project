@@ -26,7 +26,7 @@ class DocumentController extends Controller
         $percentageProgress = Lesson::find($lessonId)->progress;
 
         return response()->json([
-            'percentage' => $percentageProgress 
+            'percentage' => $percentageProgress
         ]);
     }
 }
