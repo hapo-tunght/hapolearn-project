@@ -43,12 +43,12 @@ class CourseController extends Controller
     public function join(Course $course)
     {
         $course->users()->attach(Auth::id(), ['created_at' => Carbon::now()]);
-        return redirect()->route('course.show', [$course]);
+        return redirect()->route('course.show', [$course])->with('success', 'Successfully join this course!');
     }
 
     public function leave(Course $course)
     {
         $course->users()->detach(Auth::id());
-        return redirect()->route('course.show', [$course]);
+        return redirect()->route('course.show', [$course])->with('success', 'Successfully leave this course!');
     }
 }

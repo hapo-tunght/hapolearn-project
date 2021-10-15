@@ -85,6 +85,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Document::class, 'document_users', 'user_id', 'document_id')->withPivot('lesson_id')->withTimestamps();
     }
 
+    public function getMyCoursesAttribute ()
+    {
+        return $this->courses()->get();
+    }
+
     public function scopeTeachers($query)
     {
         $query->where('role', config('config.role.teacher'));

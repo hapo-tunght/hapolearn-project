@@ -105,7 +105,7 @@ $(function () {
 
   setTimeout(function () {
     $('.success-msg').fadeOut('fast');
-  }, 3000);
+  }, 300);
 
   $('#logout-button').on('click', function (event) {
     event.preventDefault();

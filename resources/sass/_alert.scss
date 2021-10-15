@@ -1,8 +1,8 @@
-.success-msg {
-  position: fixed;
+.alert-success {
   left: 41%;
   top: 13px;
   width: fit-content;
+  min-width: 300px;
   height: 40px;
   z-index: 100;
   display: flex;

@@ -5,3 +5,4 @@ require('./home');
 require('./all_courses');
 require('./course_detail');
 require('./documents');
+require('./profile');
