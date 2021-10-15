@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UpdateProfileRequest;
@@ -11,13 +12,13 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function profile ()
-    {   
+    public function profile()
+    {
         $user = User::find(Auth::id());
         return view('users.profile', compact('user'));
     }
 
-    public function update (UpdateProfileRequest $request)
+    public function update(UpdateProfileRequest $request)
     {
         $data = $request->all();
         $user = User::find(Auth::id());
@@ -50,7 +51,7 @@ class UserController extends Controller
         return redirect()->back()->with('success', 'Update success!');
     }
 
-    public function avatar (UpdateProfileRequest $request)
+    public function avatar(UpdateProfileRequest $request)
     {
         $user = User::find(Auth::id());
         $data = $request->all();
