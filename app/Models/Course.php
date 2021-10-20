@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 
 class Course extends Model
 {
@@ -41,6 +42,11 @@ class Course extends Model
         return $this->users()->where('role', config('config.role.student'))->count();
     }
 
+    public function getTeachersOfCourseAttribute()
+    {
+        return $this->users()->where('role', config('config.role.teacher'))->get();
+    }
+
     public function getNumberLessonAttribute()
     {
         return $this->lessons()->count();
@@ -50,11 +56,25 @@ class Course extends Model
     {
         return $this->lessons()->sum('learn_time');
     }
+    public function getLessonsAttribute()
+    {
+        return $this->lessons()->paginate(config('config.pagination'));
+    }
+
+    public function getTagsAttribute()
+    {
+        return $this->tags()->inRandomOrder()->limit(2)->get();
+    }
+
+    public function getCheckJoinedCourseAttribute()
+    {
+        return $this->users()->where('user_id', Auth::id())->first();
+    }
 
     public function scopeFilter($query, $data)
     {
         if (isset($data['keyword'])) {
-            $query->where('title', 'LIKE', '%'.$data['keyword'].'%')->orWhere('description', 'LIKE', '%'. $data['keyword'] .'%');
+            $query->where('title', 'LIKE', '%'. $data['keyword'].'%')->orWhere('description', 'LIKE', '%'.$data['keyword'].'%');
         }
 
         if (isset($data['status'])) {
@@ -100,7 +120,6 @@ class Course extends Model
                 $query->withSum('lessons', 'learn_time')->orderByDesc('lessons_sum_learn_time');
             }
         }
-
         return $query;
     }
 }

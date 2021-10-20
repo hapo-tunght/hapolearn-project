@@ -29,4 +29,15 @@ class Lesson extends Model
     {
         return $this->belongsToMany(User::class, 'lesson_users', 'lesson_id', 'user_id')->withTimestamps();
     }
+
+    public function scopeSearch($query, $data, $course)
+    {
+        if (isset($data['keyword_lesson'])) {
+            $query->where('course_id', $course->id)
+            ->andWhere('title', 'LIKE', '%' . $data['keyword_lesson'] . '%');
+        } else {
+            $query->where('course_id', $course->id);
+        }
+        return $query;
+    }
 }
