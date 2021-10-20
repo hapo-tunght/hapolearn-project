@@ -7,6 +7,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,4 +35,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('courses/detail/{course}/leave', [CourseController::class, 'leave'])->name('courses.leave');
     Route::get('courses/detail/{course}/{lesson}', [LessonController::class, 'show'])->name('lesson.show');
     Route::post('/lesson/document/learned', [DocumentController::class, 'learn']);
+    Route::get('user/profile', [UserController::class, 'profile'])->name('user.profile');
+    Route::post('user/profile/update', [UserController::class, 'update'])->name('user.update');
+    Route::post('user/profile/avatar', [UserController::class, 'avatar'])->name('user.avatar');
 });

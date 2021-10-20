@@ -33,7 +33,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-center p-0" aria-labelledby="navbarDropdown">
-                                    <a href="#" class="dropdown-item text-center mt-1 p-0">Profile</a>
+                                    <a href="{{ route('user.profile') }}" class="dropdown-item text-center mt-1 p-0">Profile</a>
                                     <a id="logout-button" class="dropdown-item m-0 text-center mb-2 p-0" href="{{ route('logout') }}">Logout</a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

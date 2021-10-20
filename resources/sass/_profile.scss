@@ -1,0 +1,213 @@
+.profile-page {
+  font-family: $font_UTM_BryantLG;
+  color: $text_color;
+  background: #f2f2f2;
+
+  .name-and-avatar {
+    padding-bottom: 20px;
+    margin-right: 10px;
+    border-bottom: 2px solid #DCDCDC;
+
+    .avatar {
+      margin-top: 50px;
+    }
+
+    .fa-camera {
+      cursor: pointer;
+      position: relative;
+      bottom: 25px;
+      font-size: 22px;
+    }
+
+    .avatar .name {
+      font-size: 23px;
+      line-height: 30px;
+      font-weight: 700;
+      letter-spacing: -0.05px;
+      text-align: center;
+    }
+
+    .avatar .email {
+      font-size: 20px;
+      line-height: 22px;
+      margin-top: 5px;
+      text-align: center;
+    }
+
+    .avatar img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+
+  .personal-infor {
+    padding-left: 15px;
+
+    .birthday, .phone-number, .address {
+      height: 65px;
+      margin-right: 40px;
+      border-bottom: 1px solid #DCDCDC;
+      font-size: 18px;
+      line-height: 22px;
+    }
+  }
+
+  .show-my-list-courses {
+    margin-top: 35px;
+    margin-bottom: 50px;
+  }
+
+  .my-course-item {
+    margin-right: 30px;
+
+    .course-logo img {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+    }
+
+    .course-name {
+      margin-top: 8px;
+      font-size: 15px;
+      line-height: 17px;
+      font-weight: 600;
+    }
+  }
+
+  .add-course {
+    cursor: pointer;
+    text-decoration: none;
+
+    .add-course-top {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      border: 1.5px solid $button_color;
+    }
+
+    .add-course-top .fas {
+      font-size: 18px;
+      font-weight: 600;
+      color: $button_color;
+    }
+
+    .add-course-bottom {
+      margin-top: 8px;
+      font-size: 15px;
+      line-height: 17px;
+      font-weight: 600;
+      color: $button_color;
+    }
+  }
+  
+  .description {
+    margin-top: 20px;
+    margin-right: 40px;
+    padding-left: 15px;
+    font-size: 18px;
+    line-height: 26px;
+    letter-spacing: -1px;
+    text-align: justify;
+  }
+
+  .title {
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 45px;
+    -webkit-text-stroke-width: 1px;
+  }
+
+  .underline {
+    height: 3px;
+    width: 100%;
+    border-top: 1.5px solid $button_color;
+    border-bottom: 1.5px solid $button_color;
+  }
+
+  .my-courses {
+    margin-top: 150px;
+  }
+
+  .my-course-item {
+    color: $text_color;
+    text-decoration: none;
+
+    :hover {
+      color: $button_color;
+    }
+  }
+
+  .edit-profile {
+    .form-edit-profile {
+      margin-top: 30px;
+    }
+
+    label {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 25px;
+      letter-spacing: -0.05px;
+      margin-bottom: 7px;
+    }
+
+    .form-control {
+      color: $text_color;
+      font-size: 18px;
+      font-weight: 600;
+    }
+  }
+
+  .form-group.input-image-avatar {
+    label {
+      padding-left: 5px;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 30px;
+      letter-spacing: -0.05px;
+    }
+
+    input {
+      margin-left: 3px;
+      border-radius: 3px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 500;
+    }
+  }
+
+  .btn-update, .btn-update-avatar {
+    background: $button_color;
+    color: $white_color;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .btn-update:hover, .btn-update-avatar:hover {
+    opacity: 0.75;
+  }
+
+  .btn-close-modal-avatar {
+    color: $white_color;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .modal-header, .modal-footer {
+    margin: 0 15px;
+  }
+
+  .modal-header {
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: -0.05px;
+  }
+
+  .modal-body {
+    margin: 15px 0;
+  }
+  .close {
+    position: relative;
+    left: 10px;
+  }
+}
