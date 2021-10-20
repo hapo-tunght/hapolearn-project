@@ -8,7 +8,9 @@
                         <div class="avatar d-flex flex-column justify-content-center">
                             <div class="d-flex flex-column align-items-center">
                                 <img src="{{ asset($user->avatar) }}"  alt="avatar">
-                                <i class="fas fa-camera" data-toggle="modal" data-target="#upload-avatar-modal"></i>
+                                <div class="round-camera d-flex justify-content-center align-items-center">
+                                    <i class="fas fa-camera" data-toggle="modal" data-target="#upload-avatar-modal"></i>
+                                </div>
                             </div>
                             <div class="name">{{ $user->name }}</div>
                             <div class="email">{{ $user->email }}</div>
@@ -80,7 +82,7 @@
                                     <div class="col-md-6 mt-3">
                                         <div class="form-group">
                                             <label for="email">Email:</label>
-                                            <input type="email" name="profile_email" class="form-control" id="email" value="{{ $user->email }}">
+                                            <input type="email" name="profile_email" class="form-control" id="email" value="{{ $user->email }}" disabled>
                                             @error('profile_email')
                                                 <span class="invalid-feedback d-block" role="alert">
                                                     <strong>{{ $message }}</strong>

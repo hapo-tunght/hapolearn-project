@@ -27,10 +27,6 @@ class UserController extends Controller
             $user->name = $data['profile_name'];
         }
 
-        if (isset($data['profile_email'])) {
-            $user->email = $data['profile_email'];
-        }
-
         if (isset($data['profile_birthday'])) {
             $user->birthday = $data['profile_birthday'];
         }

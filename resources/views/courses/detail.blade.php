@@ -20,9 +20,9 @@
                 <div class="col-md-8 p-0">
                     <div class="course-detail-content">
                             <!-- Nav tabs -->
-                        <ul class="tab-bar nav nav-pills d-flex align-items-center" id="pills-tab" role="tablist">
+                        <ul class="tab-bar nav nav-pills d-flex align-items-center" id="pills-tab-detail-course" role="tablist">
                             <li class="nav-item col-md-2" role="presentation">
-                                <a class="nav-link active d-flex align-items-center" id="pills-lessons-tab" data-toggle="pill" href="#pills-lessons" role="tab" aria-controls="pills-lessons" aria-selected="true">
+                                <a class="nav-link @if (!Session::has('post_review')) active @endif d-flex align-items-center" id="pills-lessons-tab" data-toggle="pill" href="#pills-lessons" role="tab" aria-controls="pills-lessons" aria-selected="true">
                                     <p class="m-0">Lessons</p>
                                 </a>
                             </li>
@@ -32,13 +32,13 @@
                                 </a>
                             </li>
                             <li class="nav-item col-md-2" role="presentation">
-                                <a class="nav-link text-center d-flex align-items-center" id="pills-reviews-tab" data-toggle="pill" href="#pills-reviews" role="tab" aria-controls="pills-reviews" aria-selected="false">
+                                <a class="nav-link @if (Session::has('post_review')) active @endif text-center d-flex align-items-center" id="pills-reviews-tab" data-toggle="pill" href="#pills-reviews" role="tab" aria-controls="pills-reviews" aria-selected="false">
                                     <p class="m-0">Reviews</p>
                                 </a>
                             </li>
                         </ul>
                         <div class="tab-content" id="pills-tabContent">
-                            <div class="tab-pane fade show active" id="pills-lessons" role="tabpanel" aria-labelledby="pills-lessons-tab">
+                            <div class="tab-pane fade @if (!Session::has('post_review')) active show @endif" id="pills-lessons" role="tabpanel" aria-labelledby="pills-lessons-tab">
                                 <div class="tab-content-lessons">
                                     <div class="form-search-lesson w-100 d-flex align-items-center">
                                         <div class="input-group col-md-6 d-flex">                                            
@@ -80,7 +80,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="pills-reviews" role="tabpanel" aria-labelledby="pills-reviews-tab">...</div>
+                            <div class="tab-pane fade @if (Session::has('post_review')) active show @endif" id="pills-reviews" role="tabpanel" aria-labelledby="pills-reviews-tab">
+                                @include('reviews.show')
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -107,8 +109,10 @@
                                 <div class="ml-2 subject">Tag</div>
                                 <div class="ml-2">:</div>
                                 @foreach ($course->tags as $tag)
-                                    <div class="ml-2">#</div>
-                                    <a href="#" class="random-tag-name">{{ $tag->name }}</a>                                
+                                    <form action="{{ route('course.search') }}" method="GET">
+                                        <input type="text" class="d-none" name="tag" value="{{ $tag->id }}">
+                                        <button type="submit" class="random-tag-name p-0 mr-1">#{{ $tag->name }}</button>  
+                                    </form>                                  
                                 @endforeach
                             </div>
                             <div class="data price d-flex align-items-center">

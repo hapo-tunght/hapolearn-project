@@ -12,7 +12,7 @@ class Review extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'user_id', 'lesson_id', 'content', 'rate'
+        'user_id','course_id', 'lesson_id', 'content', 'rate'
     ];
 
     public function user()

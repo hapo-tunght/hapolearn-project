@@ -104,6 +104,13 @@
       margin-right: 15px;
     }
 
+    .user-avatar img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
     .user-info-name {
       font-family: $font_UTM_BryantLG;
       font-weight: bold;
@@ -135,7 +142,7 @@
     border: 0.5px solid #C4C4C4;
     background: $white_color;
     position: absolute;
-    top: 27%;
+    top: 24%;
     
 
     .fas {
