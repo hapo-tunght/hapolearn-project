@@ -50,7 +50,7 @@
                                     </div>
                                     <div class="lesson-tag d-flex">
                                         <div>Tag:</div>
-                                        @foreach ($course->all_tags as $tag)
+                                        @foreach ($course->tags as $tag)
                                             <div class="ml-2">#</div>
                                             <a href="" class="tag">{{ $tag->name }}</a>
                                         @endforeach

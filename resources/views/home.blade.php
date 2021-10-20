@@ -124,7 +124,7 @@
                     </div>
                 </div>
             </div>
-            <a class="view-all-our-courses container d-flex justify-content-center" href="#">
+            <a class="view-all-our-courses container d-flex justify-content-center" href="{{ route('course') }}">
                 View All Our Courses 
                 <span>
                     <img src="{{ asset('img/right_arrow.png') }}" alt="arrow">
@@ -167,102 +167,32 @@
                 <p>What other students turned professionals have to say about us after learning with us and reaching their goals</p>
             </div>
             <div class="feedback-slider-comment d-flex">
-                <div class="slide-feedback">
-                    <div class="slide-feedback-comment">
-                        <div class="comment-text">
-                            <p>“A wonderful course on how to start. Eddie beautifully conveys all essentials of a becoming a good Angular
-                                developer. Very glad to have taken this course. Thank you Eddie Bryan.”</p>
-                        </div>
-                    </div>
-                    <div class="slide-feedback-user d-flex">
-                        <div class="user-avatar d-flex align-items-center">
-                            <img src="{{ asset('img/info_avavtar.png') }}" alt="avatar">
-                        </div>  
-                        <div class="user-info d-flex flex-column">
-                            <div class="user-info-name">Thanh Tung Hoang</div>
-                            <div class="user-info-lang">PHP</div>
-                            <div class="user-info-vote">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>   
-                        </div>                     
-                    </div>
-                </div>
-                <div class="slide-feedback">
-                    <div class="slide-feedback-comment">
-                        <div class="comment-text">
-                            <p>“A wonderful course on how to start. Eddie beautifully conveys all essentials of a becoming a good Angular
-                                developer. Very glad to have taken this course. Thank you Eddie Bryan.”</p>
-                        </div>                       
-                    </div>
-                    <div class="slide-feedback-user d-flex">
-                        <div class="user-avatar d-flex align-items-center">
-                            <img src="{{ asset('img/info_avavtar.png') }}" alt="avatar">
-                        </div>
-                        <div class="user-info d-flex flex-column">
-                            <div class="user-info-name">Anh Hoang Nguyen</div>
-                            <div class="user-info-lang">Java</div>
-                            <div class="user-info-vote">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
+                @foreach ($reviews as $review)
+                    <div class="slide-feedback">
+                        <div class="slide-feedback-comment">
+                            <div class="comment-text">
+                                <p>“{{ $review->content }}”</p>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="slide-feedback">
-                    <div class="slide-feedback-comment">
-                        <div class="comment-text">
-                            <p>“A wonderful course on how to start. Eddie beautifully conveys all essentials of a becoming a good Angular
-                                developer. Very glad to have taken this course. Thank you Eddie Bryan.”</p>
+                        <div class="slide-feedback-user d-flex">
+                            <div class="user-avatar d-flex align-items-center">
+                                <img src="{{ asset($review->avatar) }}" alt="avatar">
+                            </div>  
+                            <div class="user-info d-flex flex-column">
+                                <div class="user-info-name">{{ $review->name }}</div>
+                                <div class="user-info-lang">{{ $review->course }}</div>
+                                <div class="user-info-vote">
+                                    @for ($i = 0; $i < $review->rate; $i++)
+                                            <i class="fas fa-star"></i>
+                                    @endfor
+                                    @for ($i = 0; $i < 5 - $review->rate; $i++)
+                                        <i class="far fa-star"></i>
+                                    @endfor
+                                </div>   
+                            </div>                     
                         </div>
                     </div>
-                    <div class="slide-feedback-user d-flex">
-                        <div class="user-avatar d-flex align-items-center">
-                            <img src="{{ asset('img/info_avavtar.png') }}" alt="avatar">
-                        </div>
-                        <div class="user-info d-flex flex-column">
-                            <div class="user-info-name">Nghia Luu Trung</div>
-                            <div class="user-info-lang">PHP</div>
-                            <div class="user-info-vote">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slide-feedback">
-                    <div class="slide-feedback-comment">
-                        <div class="comment-text">
-                            <p>“A wonderful course on how to start. Eddie beautifully conveys all essentials of a becoming a good Angular
-                                developer. Very glad to have taken this course. Thank you Eddie Bryan.”</p>
-                        </div>
-                    </div>
-                    <div class="slide-feedback-user d-flex">
-                        <div class="user-avatar d-flex align-items-center">
-                            <img src="{{ asset('img/info_avavtar.png') }}" alt="avatar">
-                        </div>
-                        <div class="user-info d-flex flex-column">
-                            <div class="user-info-name">Tuan Tran Hoang</div>
-                            <div class="user-info-lang">Python</div>
-                            <div class="user-info-vote">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
         <div class="become-a-member container-fluid d-flex justify-content-center align-items-center ">
@@ -281,19 +211,19 @@
                     <div class="specific-statistic-courses col-sm-4 d-flex justify-content-center">
                         <div class="item-name">
                             Courses
-                            <div class="item-number">1,586</div>
+                            <div class="item-number">{{ $courses }}</div>
                         </div>                        
                     </div>
                     <div class="specific-statistic-lessons col-sm-4 d-flex justify-content-center">
                         <div class="item-name">
                             Lessons
-                            <div class="item-number">2,689</div>
+                            <div class="item-number"> {{ $lessons }}</div>
                         </div>                       
                     </div>
                     <div class="specific-statistic-learners col-sm-4 d-flex justify-content-center">
                         <div class="item-name">
                             Learners
-                            <div class="item-number">16,882</div>
+                            <div class="item-number">{{ $learners }}</div>
                         </div>                       
                     </div>
                 </div>

@@ -27,13 +27,14 @@ Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/course', [CourseController::class, 'index'])->name('course');
 Route::get('/course/search', [CourseController::class, 'search'])->name('course.search');
-Route::get('courses/detail/{course}', [CourseController::class, 'show'])->name('course.show');
-Route::get('courses/detail/{course}/search', [LessonController::class, 'search'])->name('lessons.search');
+Route::get('courses/{course}', [CourseController::class, 'show'])->name('course.show');
+Route::get('courses/{course}/search', [LessonController::class, 'search'])->name('lessons.search');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('courses/detail/{course}/join', [CourseController::class, 'join'])->name('courses.join');
-    Route::get('courses/detail/{course}/leave', [CourseController::class, 'leave'])->name('courses.leave');
-    Route::get('courses/detail/{course}/{lesson}', [LessonController::class, 'show'])->name('lesson.show');
+    Route::get('courses/{course}/join', [CourseController::class, 'join'])->name('courses.join');
+    Route::get('courses/{course}/leave', [CourseController::class, 'leave'])->name('courses.leave');
+    Route::get('courses/{course}/{lesson}', [LessonController::class, 'show'])->name('lesson.show');
+    Route::post('courses/{course}/review', [CourseController::class, 'review'])->name('courses.review');
     Route::post('/lesson/document/learned', [DocumentController::class, 'learn']);
     Route::get('user/profile', [UserController::class, 'profile'])->name('user.profile');
     Route::post('user/profile/update', [UserController::class, 'update'])->name('user.update');

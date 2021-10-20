@@ -16,4 +16,12 @@ return [
   ],
 
   'numberOfOtherCourses' => 5,
+
+  'rating' => [
+    'five_stars' => 5,
+    'four_stars' => 4,
+    'three_stars' => 3,
+    'two_stars' => 2,
+    'one_star' => 1,
+  ]
 ];

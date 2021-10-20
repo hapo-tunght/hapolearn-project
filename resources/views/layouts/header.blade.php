@@ -16,7 +16,7 @@
                         <a href="{{ route('home') }}" class="nav-link navbar-link-element {{ Route::currentRouteName() == 'home' ? 'active' : '' }}">HOME</a>
                     </li>
                     <li class="nav-item ">
-                        <a href="{{ route('course') }}" class="nav-link navbar-link-element {{ Route::currentRouteName() == 'course' ? 'active' : '' }}">ALL COURSES</a>
+                        <a href="{{ route('course') }}" class="nav-link navbar-link-element {{ Route::currentRouteName() == 'course' ? 'active' : '' }}">COURSES</a>
                     </li>
 
                     @guest

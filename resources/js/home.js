@@ -34,6 +34,10 @@ $(function () {
       }
     ]
   });
+
+  setTimeout(function () {
+    $('.success-msg').fadeOut('fast');
+  }, 2000);
  
   $('[data-toggle="popover"]').popover();
 
@@ -102,10 +106,6 @@ $(function () {
     $('#login-register input').val('');
     $('.login-tab').hide();
   });
-
-  setTimeout(function () {
-    $('.success-msg').fadeOut('fast');
-  }, 300);
 
   $('#logout-button').on('click', function (event) {
     event.preventDefault();

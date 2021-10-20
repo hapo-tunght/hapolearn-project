@@ -24,7 +24,7 @@ class Course extends Model
 
     public function reviews()
     {
-        return $this->hasMany(Review::class, 'user_id');
+        return $this->hasMany(Review::class, 'course_id');
     }
 
     public function users()
@@ -66,14 +66,114 @@ class Course extends Model
         return $this->tags()->inRandomOrder()->limit(2)->get();
     }
 
-    public function getAllTagsAttribute()
-    {
-        return $this->tags()->inRandomOrder()->get();
-    }
-
     public function getCheckJoinedCourseAttribute()
     {
         return $this->users()->where('user_id', Auth::id())->first();
+    }
+
+    public function getRatingAttribute()
+    {
+        return $this->reviews()->where('rate', '!=', 'null')->count();
+    }
+
+    public function getFiveStarsAttribute()
+    {
+        return $this->reviews()->where('rate', config('config.rating.five_stars'))->count();
+    }
+
+    public function getFourStarsAttribute()
+    {
+        return $this->reviews()->where('rate', config('config.rating.four_stars'))->count();
+    }
+
+    public function getThreeStarsAttribute()
+    { 
+        return $this->reviews()->where('rate', config('config.rating.three_stars'))->count();
+    }
+
+    public function getTwoStarsAttribute()
+    {
+        return $this->reviews()->where('rate', config('config.rating.two_stars'))->count();
+    }
+
+    public function getOneStarAttribute()
+    {
+        return $this->reviews()->where('rate', config('config.rating.one_star'))->count();
+    }
+
+    public function getFiveStarsPercentageAttribute()
+    {
+        $numberReviews = count($this->reviews);
+        if ($numberReviews == 0) {
+            return 0;
+        } else {
+            return round($this->getFiveStarsAttribute() / $numberReviews * 100);
+        }
+    }
+
+    public function getFourStarsPercentageAttribute()
+    {
+        $numberReviews = count($this->reviews);
+        if ($numberReviews == 0) {
+            return 0;
+        } else {
+            return round($this->getFourStarsAttribute() / $numberReviews * 100);
+        }
+    }
+
+    public function getThreeStarsPercentageAttribute()
+    {
+        $numberReviews = count($this->reviews);
+        if ($numberReviews == 0) {
+            return 0;
+        } else {
+            return round($this->getThreeStarsAttribute() / $numberReviews * 100);
+        }
+    }
+
+    public function getTwoStarsPercentageAttribute()
+    {
+        $numberReviews = count($this->reviews);
+        if ($numberReviews == 0) {
+            return 0;
+        } else {
+            return round($this->getTwoStarsAttribute() / $numberReviews * 100);
+        }
+    }
+
+    public function getOneStarPercentageAttribute()
+    {
+        $numberReviews = count($this->reviews);
+        if ($numberReviews == 0) {
+            return 0;
+        } else {
+            return round($this->getOneStarAttribute() / $numberReviews * 100);
+        }
+    }
+
+    public function getPercentageRatingAttribute()
+    {
+        $numberReviews = count($this->reviews);
+        $fiveStarReviews = $this->getFiveStarsAttribute();
+        $fourStarReviews = $this->getFourStarsAttribute();
+        $threeStarReviews = $this->getThreeStarsAttribute();
+        $twoStarReviews = $this->getTwoStarsAttribute();
+        $oneStarReview = $this->getOneStarAttribute();
+
+        if ($numberReviews == 0) {
+            return 0;
+        } else {
+            $ratingOverview = ($fiveStarReviews * 5 + $fourStarReviews * 4 + $threeStarReviews * 3 + $twoStarReviews * 2 + $oneStarReview) / $numberReviews;
+            $difference = $ratingOverview - (int) $ratingOverview;
+
+            if ($difference < 0.25) {
+                return number_format((int) $ratingOverview, 1);
+            } elseif ($difference >= 0.25 && $difference < 0.75) {
+                return (int) $ratingOverview + 0.5;
+            } elseif ($difference >= 0.75) {
+                return number_format((int) $ratingOverview + 1, 1);
+            }
+        }
     }
 
     public function scopeFilter($query, $data)
