@@ -21,7 +21,7 @@
 
                     @guest
                         @if (Route::has('home'))
-                            <li class="nav-item login-register">
+                            <li class="nav-item login-register" id="header-login-register">
                                 <a href="#" class="nav-link navbar-link-element" data-toggle="modal"
                                 data-target="#login-register-modal">LOGIN/REGISTER</a>
                             </li>

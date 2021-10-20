@@ -1,0 +1,125 @@
+.detail-course {
+
+  .tab-content-descriptions {
+    padding: 0 15px 45px 15px;
+  }
+
+  .description, .requirements, .lesson-tag {
+    margin-top: 15px;
+  }
+
+  .description-title {
+    font-family: $font_UTM_BryantLG;
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 31px;
+    color: $text_navbar_color;
+    letter-spacing: 0.05px;
+    -webkit-text-stroke-width: 1px;
+  }
+
+  .description-content {
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 26px;
+    color: #949292;
+    margin-top: 10px;
+    letter-spacing: 0.05px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #D1D1D1;
+  }
+
+  .lesson-tag {
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 25px;
+    color: $text_navbar_color;
+
+    .tag {
+      text-decoration: none;
+      color: $text_navbar_color;
+    }
+
+    .tag:hover {
+      color: $button_color;
+    }
+  }
+
+  .documents {
+    font-family: $font_UTM_BryantLG;
+    color: $text_navbar_color;
+    padding-bottom: 15px;
+
+    .row {
+      height: 35px;
+    }
+
+    .title {
+      height: 90px;
+    }
+    .title p {
+      height: 30px;
+      padding-left: 15px;
+      font-size: 25px;
+      font-weight: bold;
+      line-height: 30px;
+      letter-spacing: -1px;
+      -webkit-text-stroke-width: 1px;
+    }
+
+      .show-document-item {
+      height: 65px;
+      padding: 15px 15px 15px 5px;
+      border-top: 1px solid #D1D1D1;
+    }
+
+    .document-type p {
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 17px;
+      color: #BDB9B9;
+    }
+
+    .document-name {
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 22px;
+      text-decoration: none;
+      color: $text_navbar_color;
+      -webkit-text-stroke-width: 0.4px;
+    }
+
+    .preview-button.btn {
+      width: 80px;
+      background: $button_color;
+      color: $white_color;
+      border-radius: 22px;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 18px;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+      -webkit-text-stroke-width: 0.3px;
+      box-shadow: inset 0px 2px 4px #6f8710;
+    }
+
+    .preview-button.btn:hover {
+      color: $text_navbar_color;
+    }
+  }
+
+  .progress {
+    position: relative;
+    right: 10px;
+
+    .progress-bar {
+      background: $button_color;
+    }
+  }
+
+  .progress-lesson {
+    position: relative;
+    right: 35px;
+  }
+}
