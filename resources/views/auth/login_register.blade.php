@@ -51,31 +51,41 @@
                         </div>
                         <div class="button-cover w-100 d-flex justify-content-center">
                             <button type="submit" class="btn">LOGIN</button>
-                        </div>                          
-                        <div class="container-fluid login-with d-flex align-items-center p-0 mt-3">
-                            <div class="horizontal-rule"><hr></div>
-                            <p>Login with</p>
-                            <div class="horizontal-rule"><hr></div>
                         </div>
-                        <div class="login-with-account d-flex flex-column align-items-center">
-                            <a href="#" class="login-with-account-google btn mt-3 d-flex justify-content-center align-items-center">
-                                <i class="fab fa-google-plus-g mr-2"></i> Google
-                            </a>
-                            <a href="#" class="login-with-account-facebook btn mt-3 mb-5 d-flex justify-content-center align-items-center">
-                                <i class="fab fa-facebook-f mr-2"></i> Facebook
-                            </a>
-                        </div>                         
-                    </form>
+                    </form>                              
+                    <div class="container-fluid login-with d-flex align-items-center p-0 mt-3">
+                        <div class="horizontal-rule"><hr></div>
+                        <p>Login with</p>
+                        <div class="horizontal-rule"><hr></div>
+                    </div>
+                    <div class="login-with-account d-flex flex-column align-items-center">
+                        <a href="{{ route('google.url') }}" class="login-with-account-google btn mt-3 d-flex justify-content-center align-items-center">
+                            <i class="fab fa-google-plus-g mr-2"></i> Google
+                        </a>
+                        <a href="" class="login-with-account-facebook btn mt-3 mb-5 d-flex justify-content-center align-items-center">
+                            <i class="fab fa-facebook-f mr-2"></i> Facebook
+                        </a>
+                    </div>                      
                 </div>
 
                 
-                <div class="tab-pane fade" id="register-tab" role="tabpanel"> 
+                <div class="tab-pane fade register-tab" id="register-tab" role="tabpanel"> 
                     <form method="POST" action="{{ route('register') }}" class="container register-form">
                         @csrf
 
                         <div class="form-group register-username">
                             <label for="username">Username:</label>
                              <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}">
+
+                            @error('username')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group ">
+                            <label for="fullname">Full name:</label>
+                             <input id="fullname" type="text" class="form-control @error('fullname') is-invalid @enderror" name="fullname" value="{{ old('fullname') }}">
 
                             @error('username')
                                 <span class="invalid-feedback" role="alert">

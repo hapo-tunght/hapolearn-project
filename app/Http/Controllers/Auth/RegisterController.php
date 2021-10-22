@@ -53,6 +53,7 @@ class RegisterController extends Controller
     {
         return User::create([
             'username' => $data['username'],
+            'name' => $data['fullname'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'avatar' => 'storage/document_logo/default_avatar.jpg',

@@ -205,16 +205,20 @@
 
   .register-form {
     .form-group {
-      margin: 35px 15px;
+      margin: 20px 15px;
+    }
+
+    input {
+      height: 45px;
     }
 
     .register-username {
-      margin-top: 45px;
+      margin-top: 30px;
     }
 
     .button-cover {
       margin-top: 20px;
-      margin-bottom: 45px;
+      margin-bottom: 30px;
     }
 
     .button-register {
