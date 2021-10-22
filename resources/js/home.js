@@ -36,13 +36,17 @@ $(function () {
   });
 
   setTimeout(function () {
-    $('.success-msg').fadeOut('fast');
+    $('.success-msg, .error-msg').fadeOut('fast');
   }, 2000);
  
   $('[data-toggle="popover"]').popover();
 
   $('.nav-tabs a').on('click', function () {
     $(this).tab('show');
+  });
+
+  $('#dropdown-menu-user').css({
+    'width': ($('.name-of-user').width() + 35 + 'px')
   });
 
   var chatbox = document.getElementById('fb-customer-chat');

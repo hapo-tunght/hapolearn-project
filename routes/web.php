@@ -40,3 +40,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('user/profile/update', [UserController::class, 'update'])->name('user.update');
     Route::post('user/profile/avatar', [UserController::class, 'avatar'])->name('user.avatar');
 });
+
+// Google Sign In
+Route::get('/google', [LoginController::class, 'redirectToGoogle'])->name('google.url');
+Route::get('/google/callback', [LoginController::class, 'handleGoogleCallback']);
