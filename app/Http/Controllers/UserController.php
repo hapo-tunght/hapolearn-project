@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function profile()
+    public function show()
     {
         $user = User::find(Auth::id());
         return view('users.profile', compact('user'));
@@ -44,7 +44,7 @@ class UserController extends Controller
         }
 
         $user->save();
-        return redirect()->back()->with('success', 'Update success!');
+        return redirect()->back()->with('success', 'Profile update successful!');
     }
 
     public function avatar(UpdateProfileRequest $request)
@@ -59,7 +59,6 @@ class UserController extends Controller
         }
 
         $user->save();
-
-        return redirect()->back()->with('success', 'Update avatar success');
+        return redirect()->back()->with('success', 'Avatar update successful!');
     }
 }
