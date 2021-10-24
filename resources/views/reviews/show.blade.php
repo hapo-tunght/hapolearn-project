@@ -29,76 +29,22 @@
         </div>
         <div class="col-8 pl-4">
             <div class="rating-specific d-flex flex-column">
-                <div class="five-stars number">
+                @foreach ($course->number_rating as $rating)
+                    <div class="number">
                     <div class="row">
                         <div class="col-2 d-flex">
-                            <div class="number-star">5</div>
+                            <div class="number-star">{{ $rating->rate }}</div>
                             <i class="fas fa-star ml-2"></i>
                         </div>
                         <div class="progress col-9">
-                            <div class="progress-bar" role="progressbar" style="width: {{ $course->five_stars_percentage . '%' }}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                {{ $course->five_stars_percentage . '%' }}
+                            <div class="progress-bar" role="progressbar" style="width: {{ ($rating->total == 0) ? 0 : round($rating->total / $course->reviews->count() * 100)  . '%' }}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                {{ ($rating->total == 0) ? 0 : round($rating->total / $course->reviews->count() * 100) . '%' }}
                             </div>
                         </div>
-                        <div class="number-of-five-star col-1 number-vote">{{ $course->five_stars }}</div>
+                        <div class="number-of-five-star col-1 number-vote">{{ $rating->total }}</div>
                     </div>
                 </div>
-                <div class="four-stars number">
-                    <div class="row">
-                        <div class="col-2 d-flex">
-                            <div class="number-star">4</div>
-                            <i class="fas fa-star ml-2"></i>
-                        </div>
-                        <div class="progress col-9">
-                            <div class="progress-bar" role="progressbar" style="width: {{ $course->four_stars_percentage . '%' }}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                {{ $course->four_stars_percentage . '%' }}
-                            </div>
-                        </div>
-                        <div class="number-of-four-star col-1 number-vote">{{ $course->four_stars }}</div>
-                    </div>
-                </div>
-                <div class="three-stars number">
-                    <div class="row">
-                        <div class="col-2 d-flex">
-                            <div class="number-star">3</div>
-                            <i class="fas fa-star ml-2"></i>
-                        </div>
-                        <div class="progress col-9">
-                            <div class="progress-bar" role="progressbar" style="width: {{ $course->three_stars_percentage . '%' }}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                {{ $course->three_stars_percentage . '%' }}
-                            </div>
-                        </div>
-                        <div class="number-of-three-star col-1 number-vote">{{ $course->three_stars }}</div>
-                    </div>
-                </div>
-                <div class="two-stars number">
-                    <div class="row">
-                        <div class="col-2 d-flex">
-                            <div class="number-star">2</div>
-                            <i class="fas fa-star ml-2"></i>
-                        </div>
-                        <div class="progress col-9">
-                            <div class="progress-bar" role="progressbar" style="width: {{ $course->two_stars_percentage . '%' }}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                {{ $course->two_stars_percentage . '%' }}
-                            </div>
-                        </div>
-                        <div class="number-of-two-star col-1 number-vote">{{ $course->two_stars }}</div>
-                    </div>
-                </div>
-                <div class="one-stars number">
-                    <div class="row">
-                        <div class="col-2 d-flex">
-                            <div class="number-star">1</div>
-                            <i class="fas fa-star ml-2"></i>
-                        </div>
-                        <div class="progress col-9">
-                            <div class="progress-bar" role="progressbar" style="width: {{ $course->one_star_percentage . '%' }}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                {{ $course->one_star_percentage . '%' }}
-                            </div>
-                        </div>
-                        <div class="number-of-one-star col-1 number-vote">{{ $course->one_star }}</div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
