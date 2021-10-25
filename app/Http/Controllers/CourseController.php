@@ -49,7 +49,6 @@ class CourseController extends Controller
             $review->date = $ddmmyy->toFormattedDateString();
             $review->time = $ddmmyy->toTimeString();
         }
-
         return view('courses.detail', compact('course', 'lessons', 'otherCourses', 'reviews'));
     }
 

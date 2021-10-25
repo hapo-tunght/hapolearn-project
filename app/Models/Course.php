@@ -73,7 +73,12 @@ class Course extends Model
 
     public function getNumberRatingAttribute()
     {
-        return $this->reviews()->selectRaw('rate, count(*) as total')->groupBy('rate')->orderByDesc('rate')->get();
+        $numberRating = array(0, 0, 0, 0, 0);
+        $numbers = $this->reviews()->selectRaw('rate, count(*) as total')->groupBy('rate')->orderByDesc('rate')->get();
+        foreach ($numbers as $number) {
+            $numberRating[$number->rate - 1] = $number->total;
+        }
+        return array_reverse($numberRating);
     }
 
     public function getPercentageRatingAttribute()
