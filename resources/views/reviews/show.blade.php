@@ -29,22 +29,22 @@
         </div>
         <div class="col-8 pl-4">
             <div class="rating-specific d-flex flex-column">
-                @for ($i = 0; $i < 5; $i++)
+                @foreach ($course->number_rating as $key => $numberRating)
                     <div class="number">
                         <div class="row">
                             <div class="col-2 d-flex">
-                                <div class="number-star">{{ 5 - $i }}</div>
+                                <div class="number-star">{{ 5 - $key }}</div>
                                 <i class="fas fa-star ml-2"></i>
                             </div>
                             <div class="progress col-9">
-                                <div class="progress-bar" role="progressbar" style="width: {{ ($course->number_rating[$i] == 0) ? 0 : round($course->number_rating[$i] / $course->reviews->count() * 100)  . '%' }}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                    {{ ($course->number_rating[$i] == 0) ? 0 : round($course->number_rating[$i] / $course->reviews->count() * 100) . '%' }}
+                                <div class="progress-bar" role="progressbar" style="width: {{ ($numberRating == 0) ? 0 : round($numberRating / $course->reviews->count() * 100)  . '%' }}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                    {{ ($numberRating == 0) ? 0 : round($numberRating / $course->reviews->count() * 100) . '%' }}
                                 </div>
                             </div>
-                            <div class="number-of-five-star col-1 number-vote">{{ ($course->number_rating[$i] == 0) ? 0 : $course->number_rating[$i] }}</div>
+                            <div class="number-of-five-star col-1 number-vote">{{ ($numberRating == 0) ? 0 : $numberRating }}</div>
                         </div>
                     </div>
-                @endfor                       
+                @endforeach                          
             </div>
         </div>
     </div>
