@@ -12,7 +12,11 @@ class UserController extends Controller
 {
     public function show(User $user)
     {
-        return view('users.profile', compact('user'));
+        if (Auth::id() == $user->id) {
+            return view('users.profile', compact('user'));
+        } else {
+            return 'You can not access this page!';
+        }
     }
 
     public function update(UpdateProfileRequest $request, User $user)
