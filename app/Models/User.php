@@ -95,4 +95,23 @@ class User extends Authenticatable
     {
         $query->where('role', config('config.role.teacher'));
     }
+
+    public function updateProfile($request, $user)
+    {
+        $user->update([
+            'name' => $request['profile_name'],
+            'birthday' => $request['profile_birthday'],
+            'phone_number' => $request['profile_phone'],
+            'address' => $request['profile_address'],
+            'about_me' => $request['profile_desc'],
+        ]);
+    }
+
+    public function updateAvatar($request, $user)
+    {
+        $request->file('profile_avatar')->storeAs('public/avatars', 'avatar_' . $user->username . '.png', 'local');
+        $avatar_path = 'storage/avatars/avatar_' . $user->username . '.png';
+        $user->avatar = $avatar_path;
+        $user->save();
+    }
 }

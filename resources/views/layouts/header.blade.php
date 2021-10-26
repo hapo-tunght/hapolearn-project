@@ -16,7 +16,7 @@
                         <a href="{{ route('home') }}" class="nav-link navbar-link-element {{ Route::currentRouteName() == 'home' ? 'active' : '' }}">HOME</a>
                     </li>
                     <li class="nav-item ">
-                        <a href="{{ route('course') }}" class="nav-link navbar-link-element {{ Route::currentRouteName() == 'course' ? 'active' : '' }}">COURSES</a>
+                        <a href="{{ route('courses.index') }}" class="nav-link navbar-link-element {{ Route::currentRouteName() == 'courses.index' ? 'active' : '' }}">COURSES</a>
                     </li>
 
                     @guest
@@ -33,7 +33,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-center p-0" aria-labelledby="navbarDropdown" id="dropdown-menu-user">
-                                    <a href="{{ route('user.profile') }}" class="dropdown-item text-center mt-1 p-0">Profile</a>
+                                    <a href="{{ route('users.show', [Auth::id()]) }}" class="dropdown-item text-center mt-1 p-0">Profile</a>
                                     <a id="logout-button" class="dropdown-item m-0 text-center mb-2 p-0" href="{{ route('logout') }}">Logout</a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

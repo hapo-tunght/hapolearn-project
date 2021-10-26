@@ -124,7 +124,7 @@
                     </div>
                 </div>
             </div>
-            <a class="view-all-our-courses container d-flex justify-content-center" href="{{ route('course') }}">
+            <a class="view-all-our-courses container d-flex justify-content-center" href="{{ route('courses.index') }}">
                 View All Our Courses 
                 <span>
                     <img src="{{ asset('img/right_arrow.png') }}" alt="arrow">
