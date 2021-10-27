@@ -87,7 +87,7 @@ class Course extends Model
     }
 
     public function getThreeStarsAttribute()
-    { 
+    {
         return $this->reviews()->where('rate', config('config.rating.three_stars'))->count();
     }
 

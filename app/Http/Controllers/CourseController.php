@@ -27,11 +27,11 @@ class CourseController extends Controller
     public function show(Request $request, Course $course)
     {
         $data = $request->all();
-        $lessons = Lesson::search($data, $course)->paginate(config('config.pagination'),['*'], 'lesson_page');
+        $lessons = Lesson::search($data, $course)->paginate(config('config.pagination'), ['*'], 'lesson_page');
         $otherCourses = Course::inRandomOrder()->limit(config('config.numberOfOtherCourses'))->get();
-        $reviews = $course->reviews()->orderBy('id', 'desc')->paginate(10 , ['*'], 'review_page');
+        $reviews = $course->reviews()->orderBy('id', 'desc')->paginate(10, ['*'], 'review_page');
         foreach ($reviews as $review) {
-            $user = User::find($review->user_id);  
+            $user = User::find($review->user_id);
             $review->avatar = $user->avatar;
             $review->name = $user->name;
             $ddmmyy = Carbon::now();

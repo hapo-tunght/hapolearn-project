@@ -110,8 +110,8 @@ class User extends Authenticatable
     public function updateAvatar($request, $user)
     {
         $request->file('profile_avatar')->storeAs('public/avatars', 'avatar_' . $user->username . '.png', 'local');
-        $avatar_path = 'storage/avatars/avatar_' . $user->username . '.png';
-        $user->avatar = $avatar_path;
+        $avatarPath = 'storage/avatars/avatar_' . $user->username . '.png';
+        $user->avatar = $avatarPath;
         $user->save();
     }
 }
