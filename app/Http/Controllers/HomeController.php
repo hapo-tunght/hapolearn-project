@@ -19,9 +19,9 @@ class HomeController extends Controller
     public function index()
     {
         $reviews = Review::inRandomOrder()->limit(config('config.numberOfOtherCourses'))->get();
-        $courses = Course::get()->count();
-        $lessons = Lesson::get()->count();
-        $learners = CourseUser::get()->count();
+        $courses = Course::count();
+        $lessons = Lesson::count();
+        $learners = User::where('role', config('config.role.student'))->count();
         return view('home', compact('reviews', 'courses', 'lessons', 'learners'));
     }
 }
