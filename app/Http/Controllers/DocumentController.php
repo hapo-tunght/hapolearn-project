@@ -10,11 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class DocumentController extends Controller
 {
-    public function index(Course $course, Lesson $lesson)
-    {
-        $otherCourses = Course::inRandomOrder()->limit(config('config.numberOfOtherCourses'))->get();
-        return view('lessons.detail', compact('course', 'lesson', 'otherCourses'));
-    }
+    
     public function learn(Request $request)
     {
         $lessonId = $request->lessonId;

@@ -7,6 +7,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LessonController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,12 +38,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/{course}/review', [CourseController::class, 'review'])->name('courses.review');
     });
 
-    Route::prefix('documents')->group(function () {
-        Route::get('/{course}/{lesson}', [DocumentController::class, 'index'])->name('documents.index');
-        Route::post('/learned', [DocumentController::class, 'learn']);
-    });
-
+    Route::resource('course.lessons', LessonController::class)->only(['show']);
     Route::resource('users', UserController::class)->only([
         'show', 'update'
     ]);
+    
+    Route::post('/documents/learned', [DocumentController::class, 'learn']);
 });

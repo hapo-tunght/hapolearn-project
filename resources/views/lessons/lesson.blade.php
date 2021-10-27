@@ -9,16 +9,16 @@
         @else
             @if ($lesson->progress == 0)
                 <div class="col-md-9 d-flex align-items-center">
-                    <a href="{{ route('documents.index', [$course->id, $lesson->id])}}" class="lesson-items-title">
+                    <a href="{{ route('course.lessons.show', [$course->id, $lesson->id])}}" class="lesson-items-title">
                         {{ ($lessons->currentPage() - 1)*config('config.pagination') + $key + 1 }}. {{ $lesson->title }}
                     </a>
                 </div>
                 <div class="col-md-3 d-flex justify-content-center align-items-center">
-                    <a href="{{ route('documents.index', [$course->id, $lesson->id])}}" class="learn-lesson-button">Learn</a>
+                    <a href="{{ route('course.lessons.show', [$course->id, $lesson->id])}}" class="learn-lesson-button">Learn</a>
                 </div>
             @else
                 <div class="col-md-10 d-flex align-items-center">
-                    <a href="{{ route('documents.index', [$course->id, $lesson->id])}}" class="lesson-items-title">
+                    <a href="{{ route('course.lessons.show', [$course->id, $lesson->id])}}" class="lesson-items-title">
                         {{ ($lessons->currentPage() - 1)*config('config.pagination') + $key + 1 }}. {{ $lesson->title }}
                     </a>
                 </div>

@@ -10,7 +10,7 @@
             @endif
             >
             @if (isset($lesson->id))
-                <a href="{{ route('documents.index', [$course->id, $lesson->id]) }}">{{ $lesson->title }}</a>
+                <a href="{{ route('course.lessons.show', [$course->id, $lesson->id]) }}">{{ $lesson->title }}</a>
             @endif
         </span>
     </div>
