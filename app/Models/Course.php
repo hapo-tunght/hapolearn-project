@@ -71,99 +71,22 @@ class Course extends Model
         return $this->users()->where('user_id', Auth::id())->first();
     }
 
-    public function getRatingAttribute()
+    public function getNumberRatingAttribute()
     {
-        return $this->reviews()->where('rate', '!=', 'null')->count();
-    }
-
-    public function getFiveStarsAttribute()
-    {
-        return $this->reviews()->where('rate', config('config.rating.five_stars'))->count();
-    }
-
-    public function getFourStarsAttribute()
-    {
-        return $this->reviews()->where('rate', config('config.rating.four_stars'))->count();
-    }
-
-    public function getThreeStarsAttribute()
-    { 
-        return $this->reviews()->where('rate', config('config.rating.three_stars'))->count();
-    }
-
-    public function getTwoStarsAttribute()
-    {
-        return $this->reviews()->where('rate', config('config.rating.two_stars'))->count();
-    }
-
-    public function getOneStarAttribute()
-    {
-        return $this->reviews()->where('rate', config('config.rating.one_star'))->count();
-    }
-
-    public function getFiveStarsPercentageAttribute()
-    {
-        $numberReviews = count($this->reviews);
-        if ($numberReviews == 0) {
-            return 0;
-        } else {
-            return round($this->getFiveStarsAttribute() / $numberReviews * 100);
+        $numberRating = array(0, 0, 0, 0, 0);
+        $numbers = $this->reviews()->selectRaw('rate, count(*) as total')->groupBy('rate')->orderByDesc('rate')->get();
+        foreach ($numbers as $number) {
+            $numberRating[$number->rate - 1] = $number->total;
         }
-    }
-
-    public function getFourStarsPercentageAttribute()
-    {
-        $numberReviews = count($this->reviews);
-        if ($numberReviews == 0) {
-            return 0;
-        } else {
-            return round($this->getFourStarsAttribute() / $numberReviews * 100);
-        }
-    }
-
-    public function getThreeStarsPercentageAttribute()
-    {
-        $numberReviews = count($this->reviews);
-        if ($numberReviews == 0) {
-            return 0;
-        } else {
-            return round($this->getThreeStarsAttribute() / $numberReviews * 100);
-        }
-    }
-
-    public function getTwoStarsPercentageAttribute()
-    {
-        $numberReviews = count($this->reviews);
-        if ($numberReviews == 0) {
-            return 0;
-        } else {
-            return round($this->getTwoStarsAttribute() / $numberReviews * 100);
-        }
-    }
-
-    public function getOneStarPercentageAttribute()
-    {
-        $numberReviews = count($this->reviews);
-        if ($numberReviews == 0) {
-            return 0;
-        } else {
-            return round($this->getOneStarAttribute() / $numberReviews * 100);
-        }
+        return array_reverse($numberRating);
     }
 
     public function getPercentageRatingAttribute()
     {
-        $numberReviews = count($this->reviews);
-        $fiveStarReviews = $this->getFiveStarsAttribute();
-        $fourStarReviews = $this->getFourStarsAttribute();
-        $threeStarReviews = $this->getThreeStarsAttribute();
-        $twoStarReviews = $this->getTwoStarsAttribute();
-        $oneStarReview = $this->getOneStarAttribute();
-
-        if ($numberReviews == 0) {
+        if (count($this->reviews) == 0) {
             return 0;
         } else {
-            $ratingOverview = ($fiveStarReviews * 5 + $fourStarReviews * 4 + $threeStarReviews * 3 + $twoStarReviews * 2 + $oneStarReview) / $numberReviews;
+            $ratingOverview = $this->reviews->avg('rate');
             $difference = $ratingOverview - (int) $ratingOverview;
 
             if ($difference < 0.25) {

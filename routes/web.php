@@ -21,26 +21,32 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-
 Auth::routes();
-Route::get('logout', [LoginController::class, 'logout'])->name('logout');
-
-Route::get('/course', [CourseController::class, 'index'])->name('course');
-Route::get('/course/search', [CourseController::class, 'search'])->name('course.search');
-Route::get('courses/{course}', [CourseController::class, 'show'])->name('course.show');
-Route::get('courses/{course}/search', [LessonController::class, 'search'])->name('lessons.search');
-
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('courses/{course}/join', [CourseController::class, 'join'])->name('courses.join');
-    Route::get('courses/{course}/leave', [CourseController::class, 'leave'])->name('courses.leave');
-    Route::get('courses/{course}/{lesson}', [LessonController::class, 'show'])->name('lesson.show');
-    Route::post('courses/{course}/review', [CourseController::class, 'review'])->name('courses.review');
-    Route::post('/lesson/document/learned', [DocumentController::class, 'learn']);
-    Route::get('user/profile', [UserController::class, 'profile'])->name('user.profile');
-    Route::post('user/profile/update', [UserController::class, 'update'])->name('user.update');
-    Route::post('user/profile/avatar', [UserController::class, 'avatar'])->name('user.avatar');
-});
-
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 // Google Sign In
 Route::get('/google', [LoginController::class, 'redirectToGoogle'])->name('google.url');
 Route::get('/google/callback', [LoginController::class, 'handleGoogleCallback']);
+
+Route::prefix('courses')->group(function () {
+    Route::get('/', [CourseController::class, 'index'])->name('course');
+    Route::get('/search', [CourseController::class, 'search'])->name('course.search');
+    Route::get('/{course}', [CourseController::class, 'show'])->name('course.show');
+    Route::get('/{course}/search', [LessonController::class, 'search'])->name('lessons.search');
+});
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::prefix('courses')->group(function () {
+        Route::get('/{course}/join', [CourseController::class, 'join'])->name('courses.join');
+        Route::get('/{course}/leave', [CourseController::class, 'leave'])->name('courses.leave');
+        Route::get('/{course}/{lesson}', [LessonController::class, 'show'])->name('lesson.show');
+        Route::post('/{course}/review', [CourseController::class, 'review'])->name('courses.review');
+    });
+
+    Route::prefix('profile')->group(function () {
+        Route::get('/', [UserController::class, 'show'])->name('user.profile');
+        Route::post('/update', [UserController::class, 'update'])->name('user.update');
+        Route::post('/avatar', [UserController::class, 'avatar'])->name('user.avatar');
+    });
+    
+    Route::post('/document/learned', [DocumentController::class, 'learn']);
+});
