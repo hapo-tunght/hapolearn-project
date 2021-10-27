@@ -8,7 +8,7 @@ $(function () {
   $('.document-name, .preview-button').on('click', function() {
     $.ajax({
       type: 'POST',
-      url: '/document/learned',
+      url: '/documents/learned',
       data: {
         lessonId: $(this).data('lesson-id'),
         documentId: $(this).data('document-id'),

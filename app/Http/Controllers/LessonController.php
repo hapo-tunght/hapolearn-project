@@ -4,13 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Course;
-use App\Models\CourseUser;
 use App\Models\Lesson;
-use App\Models\User;
-use App\Models\Tag;
 
 class LessonController extends Controller
 {
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function show(Course $course, Lesson $lesson)
     {
         $otherCourses = Course::inRandomOrder()->limit(config('config.numberOfOtherCourses'))->get();

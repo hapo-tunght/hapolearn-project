@@ -124,7 +124,7 @@
                     </div>
                 </div>
             </div>
-            <a class="view-all-our-courses container d-flex justify-content-center" href="{{ route('course') }}">
+            <a class="view-all-our-courses container d-flex justify-content-center" href="{{ route('courses.index') }}">
                 View All Our Courses 
                 <span>
                     <img src="{{ asset('img/right_arrow.png') }}" alt="arrow">
@@ -176,11 +176,11 @@
                         </div>
                         <div class="slide-feedback-user d-flex">
                             <div class="user-avatar d-flex align-items-center">
-                                <img src="{{ asset($review->avatar) }}" alt="avatar">
+                                <img src="{{ asset($review->user->avatar) }}" alt="avatar">
                             </div>  
                             <div class="user-info d-flex flex-column">
-                                <div class="user-info-name">{{ $review->name }}</div>
-                                <div class="user-info-lang">{{ $review->course }}</div>
+                                <div class="user-info-name">{{ $review->user->name }}</div>
+                                <div class="user-info-lang">{{ $review->course->title }}</div>
                                 <div class="user-info-vote">
                                     @for ($i = 0; $i < $review->rate; $i++)
                                             <i class="fas fa-star"></i>

@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\DocumentUser;
 use App\Models\Lesson;
+use App\Models\Course;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class DocumentController extends Controller
 {
+    
     public function learn(Request $request)
     {
         $lessonId = $request->lessonId;

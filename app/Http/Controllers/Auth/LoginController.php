@@ -94,15 +94,11 @@ class LoginController extends Controller
     public function handleGoogleCallback()
     {
         try {
-
             $user = Socialite::driver('google')->stateless()->user();
-
             $findUser = User::where('google_id', $user->id)->first();
 
             if ($findUser) {
-
                 Auth::login($findUser);
-
                 return redirect()->route('home')->with('success', 'Successfully login!');
             } else {
                 $newUser = User::create([
@@ -112,9 +108,7 @@ class LoginController extends Controller
                     'password' => encrypt('123456789'),
                     'avatar' => 'storage/document_logo/default_avatar.jpg',
                 ]);
-
                 Auth::login($newUser);
-
                 return redirect()->route('home')->with('success', 'Successfully login!');
             }
         } catch (Exception $e) {

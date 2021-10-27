@@ -45,14 +45,14 @@
                         <div class="show-my-list-courses d-flex justify-content-center">
                             <div class="row">
                                 @foreach ($user->my_courses as $course)
-                                    <a href="{{route('course.show', [$course->id])}}" class="my-course-item d-flex flex-column" target="_blank">
+                                    <a href="{{route('courses.show', [$course->id])}}" class="my-course-item d-flex flex-column" target="_blank">
                                         <div class="course-logo">
                                             <img src="{{ $course->logo_path }}" alt="my-course-logo">
                                         </div>
                                         <div class="course-name text-center">{{ $course->title }}</div>
                                     </a>
                                 @endforeach
-                                <a href="{{ route('course') }}" class="add-course d-flex flex-column">
+                                <a href="{{ route('courses.index') }}" class="add-course d-flex flex-column">
                                     <div class="add-course-top d-flex justify-content-center align-items-center">
                                         <i class="fas fa-plus"></i>
                                     </div>
@@ -65,8 +65,9 @@
                         <div class="title">Edit profile</div>
                         <div class="underline"></div>
                         <div class="form-edit-profile mb-4">
-                            <form action="{{ route('user.update') }}" method="post">
+                            <form action="{{ route('users.update', [Auth::id()]) }}" method="POST">
                                 @csrf
+                                @method('PATCH')
                                 <div class="row m-0 p-0">
                                     <div class="col-md-6 mt-3 pl-0">
                                         <div class="form-group">
@@ -157,8 +158,9 @@
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="{{ route('user.avatar') }}" method="post" id="upload-avatar-form" enctype="multipart/form-data">
+                    <form action="{{ route('users.update', [Auth::id()]) }}" method="POST" id="upload-avatar-form" enctype="multipart/form-data">
                         @csrf
+                        @method('PATCH')
                         <div class="modal-body">
                             <div class="form-group input-image-avatar">
                                 <label>Import your image file</label>

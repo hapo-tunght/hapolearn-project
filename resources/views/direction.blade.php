@@ -3,14 +3,14 @@
         <span>
             <a href="{{ route('home') }}">Home</a>
             >
-            <a href="{{ route('course') }}">All courses</a>
+            <a href="{{ route('courses.index') }}">All courses</a>
             >
             @if (isset($course->id))
-                <a href="{{ route('course.show', $course->id) }}">{{ $course->title }}</a>
+                <a href="{{ route('courses.show', $course->id) }}">{{ $course->title }}</a>
             @endif
             >
             @if (isset($lesson->id))
-                <a href="{{ route('lesson.show', [$course->id, $lesson->id]) }}">{{ $lesson->title }}</a>
+                <a href="{{ route('course.lessons.show', [$course->id, $lesson->id]) }}">{{ $lesson->title }}</a>
             @endif
         </span>
     </div>

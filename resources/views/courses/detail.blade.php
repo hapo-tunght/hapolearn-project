@@ -42,7 +42,7 @@
                                 <div class="tab-content-lessons">
                                     <div class="form-search-lesson w-100 d-flex align-items-center">
                                         <div class="input-group col-md-6 d-flex">                                            
-                                            <form action="{{route('course.show', [$course->id])}}" method="GET" class="d-flex">
+                                            <form action="{{route('courses.show', [$course->id])}}" method="GET" class="d-flex">
                                                 <div class="form-outline d-flex">
                                                     <input type="text" id="form-search" name="keyword_lesson" class="form-control form-control-search w-100" placeholder="Search..."/>
                                                     <i class="fas fa-search"></i>
@@ -109,7 +109,7 @@
                                 <div class="ml-2 subject">Tag</div>
                                 <div class="ml-2">:</div>
                                 @foreach ($course->tags as $tag)
-                                    <form action="{{ route('course.search') }}" method="GET">
+                                    <form action="{{ route('courses.index') }}" method="GET">
                                         <input type="text" class="d-none" name="tag" value="{{ $tag->id }}">
                                         <button type="submit" class="random-tag-name p-0 mr-1">#{{ $tag->name }}</button>  
                                     </form>                                  
@@ -139,7 +139,7 @@
                                 <div class="other-course-list mt-2">
                                     @foreach ($otherCourses as $key => $otherCourse)
                                         <div class="other-course-item d-flex align-items-center">
-                                            <a href="{{route('course.show', ['course' => $otherCourse->id])}}">
+                                            <a href="{{route('courses.show', ['course' => $otherCourse->id])}}">
                                                 {{ $key + 1 }}. {{ $otherCourse->title }}
                                             </a>                                        
                                         </div>                 
@@ -147,7 +147,7 @@
                                 </div>
                             </div>
                             <div class="other-course-footer d-flex justify-content-center align-items-center">
-                                <a href="{{route('course')}}" class="btn view-all-ours-courses">
+                                <a href="{{route('courses.index')}}" class="btn view-all-ours-courses">
                                     View all ours courses
                                 </a>
                             </div>

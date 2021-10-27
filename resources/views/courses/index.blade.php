@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="all-course-page w-100 d-flex flex-column">
-        <form action="{{ route('course.search') }}" method="get">
+        <form action="{{ route('courses.index') }}" method="get">
             <div class="container d-flex">
                 <div class="filter-form mt-5">
                     <a data-toggle="collapse" href="#filter-collapse" class="filter-button btn"><i class="fas fa-sliders-h"></i> Filter</a> 

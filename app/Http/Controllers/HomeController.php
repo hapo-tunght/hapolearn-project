@@ -22,14 +22,6 @@ class HomeController extends Controller
         $courses = Course::get()->count();
         $lessons = Lesson::get()->count();
         $learners = CourseUser::get()->count();
-
-        foreach ($reviews as $review) {
-            $user = User::find($review->user_id);
-            $course = Course::find($review->course_id);
-            $review->name = $user->name;
-            $review->course = $course->title;
-            $review->avatar = $user->avatar;
-        }
         return view('home', compact('reviews', 'courses', 'lessons', 'learners'));
     }
 }

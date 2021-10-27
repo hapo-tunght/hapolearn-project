@@ -5,60 +5,28 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UpdateProfileRequest;
-use Carbon\Carbon;
-
 
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function show()
+    public function show(User $user)
     {
-        $user = User::find(Auth::id());
-        return view('users.profile', compact('user'));
+        if (Auth::id() == $user->id) {
+            return view('users.profile', compact('user'));
+        } else {
+            return 'You can not access this page!';
+        }
     }
 
-    public function update(UpdateProfileRequest $request)
+    public function update(UpdateProfileRequest $request, User $user)
     {
-        $data = $request->all();
-        $user = User::find(Auth::id());
-
-        if (isset($data['profile_name'])) {
-            $user->name = $data['profile_name'];
+        if (isset($request['profile_avatar'])) {
+            $user->updateAvatar($request, $user);
+            return redirect()->back()->with('success', 'Avatar update successful!');
+        } else {
+            $user->updateProfile($request, $user);
+            return redirect()->back()->with('success', 'Profile update successful!');
         }
-
-        if (isset($data['profile_birthday'])) {
-            $user->birthday = $data['profile_birthday'];
-        }
-
-        if (isset($data['profile_phone'])) {
-            $user->phone_number = $data['profile_phone'];
-        }
-
-        if (isset($data['profile_address'])) {
-            $user->address = $data['profile_address'];
-        }
-
-        if (isset($data['profile_desc'])) {
-            $user->about_me = $data['profile_desc'];
-        }
-
-        $user->save();
-        return redirect()->back()->with('success', 'Profile update successful!');
-    }
-
-    public function avatar(UpdateProfileRequest $request)
-    {
-        $user = User::find(Auth::id());
-        $data = $request->all();
-        
-        if (isset($data['profile_avatar'])) {
-            $request->file('profile_avatar')->storeAs('public/avatars', 'avatar_' . $user->username . '.png', 'local');
-            $avatar_path = 'storage/avatars/avatar_' . $user->username . '.png';
-            $user->avatar = $avatar_path;
-        }
-
-        $user->save();
-        return redirect()->back()->with('success', 'Avatar update successful!');
     }
 }

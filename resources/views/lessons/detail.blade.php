@@ -153,7 +153,7 @@
                                 <div class="other-course-list mt-2">
                                     @foreach ($otherCourses as $key => $otherCourse)
                                         <div class="other-course-item d-flex align-items-center">
-                                            <a href="{{route('course.show', ['course' => $otherCourse->id])}}">
+                                            <a href="{{route('courses.show', ['course' => $otherCourse->id])}}">
                                                 {{ $key + 1 }}. {{ $otherCourse->title }}
                                             </a>                                        
                                         </div>                 
@@ -161,7 +161,7 @@
                                 </div>
                             </div>
                             <div class="other-course-footer d-flex justify-content-center align-items-center">
-                                <a href="{{route('course')}}" class="btn view-all-ours-courses">
+                                <a href="{{route('courses.index')}}" class="btn view-all-ours-courses">
                                     View all ours courses
                                 </a>
                             </div>
