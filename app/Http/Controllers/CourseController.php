@@ -30,16 +30,7 @@ class CourseController extends Controller
         $lessons = Lesson::search($data, $course)->paginate(config('config.pagination'), ['*'], 'lesson_page');
         $otherCourses = Course::inRandomOrder()->limit(config('config.numberOfOtherCourses'))->get();
         $reviews = $course->reviews()->orderBy('id', 'desc')->paginate(10, ['*'], 'review_page');
-        foreach ($reviews as $review) {
-            $user = User::find($review->user_id);
-            $review->avatar = $user->avatar;
-            $review->name = $user->name;
-            $ddmmyy = Carbon::now();
-            $ddmmyy = $review->created_at;
-            $review->date = $ddmmyy->toFormattedDateString();
-            $review->time = $ddmmyy->toTimeString();
-        }
-
+        
         return view('courses.detail', compact('course', 'lessons', 'otherCourses', 'reviews'));
     }
 
