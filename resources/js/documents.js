@@ -15,8 +15,8 @@ $(function () {
       },
       dataType: 'json',
       success: function (response) {
-        $('#progress-bar-document').css('width', response.percentage + '%');
-        $('#progress-bar-document').html(response.percentage + '%');
+        $('#progressBarDocument').css('width', response.percentage + '%');
+        $('#progressBarDocument').html(response.percentage + '%');
       }
     })
   });

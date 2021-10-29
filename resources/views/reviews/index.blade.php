@@ -65,28 +65,28 @@
             @csrf
             <div class="title">Submit review</div>
             <div class="form-group">
-                <label for="input-review">Message</label>
-                <textarea name="review_content" id="input-review" class="form-control"></textarea>
+                <label for="inputReview">Message</label>
+                <textarea name="review_content" id="inputReview" class="form-control"></textarea>
             </div>
             <div class="form-vote d-flex">
                 <span class="vote-txt">Vote</span>
                 <div class="pick-rate ml-3 mr-3">
-                    <input type="radio" name="rate" id="star-5" class="star d-none" value="5" required>
-                    <label for="star-5" id="star-label-5" data-star="5" class="star star-5 mr-1"></label>
-                    <input type="radio" name="rate" id="star-4" class="star d-none" value="4">
-                    <label for="star-4" id="star-label-4" data-star="4" class="star star-4 mr-1"></label>
-                    <input type="radio" name="rate" id="star-3" class="star d-none" value="3">
-                    <label for="star-3" id="star-label-3" data-star="3" class="star star-3 mr-1"></label>
-                    <input type="radio" name="rate" id="star-2" class="star d-none" value="2">
-                    <label for="star-2" id="star-label-2" data-star="2" class="star star-2 mr-1"></label>
-                    <input type="radio" name="rate" id="star-1" class="star d-none" value="1">
-                    <label for="star-1" id="star-label-1" data-star="1" class="star star-1 mr-1"></label>
+                    <input type="radio" name="rate" id="fiveStars" class="star d-none" value="5" required>
+                    <label for="fiveStars" data-star="5" class="star star-5 mr-1"></label>
+                    <input type="radio" name="rate" id="fourStars" class="star d-none" value="4">
+                    <label for="fourStars" data-star="4" class="star star-4 mr-1"></label>
+                    <input type="radio" name="rate" id="threeStars" class="star d-none" value="3">
+                    <label for="threeStars" data-star="3" class="star star-3 mr-1"></label>
+                    <input type="radio" name="rate" id="twoStars" class="star d-none" value="2">
+                    <label for="twoStars" data-star="2" class="star star-2 mr-1"></label>
+                    <input type="radio" name="rate" id="oneStar" class="star d-none" value="1">
+                    <label for="oneStar" data-star="1" class="star star-1 mr-1"></label>
                 </div>
                 <span class="stars-txt">(stars)</span>
             </div>
 
             <div class="w-100 float-right mb-3">
-                <button type="submit" id="send-review" class="btn btn-send float-right"><p class="m-0">Send</p></button>
+                <button type="submit" id="sendReview" class="btn btn-send float-right"><p class="m-0">Send</p></button>
             </div>
         </form>
     </div>

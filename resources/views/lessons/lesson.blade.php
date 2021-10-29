@@ -23,7 +23,7 @@
                     </a>
                 </div>
                 <div class="progress progress-lesson col-md-2 p-0 mt-4">
-                    <div id="progress-bar-document" class="progress-bar"
+                    <div id="progressBarDocument" class="progress-bar"
                     style="width: {{$lesson->progress . '%'}};" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{$lesson->progress . '%'}}</div>
                 </div>
             @endif           

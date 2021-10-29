@@ -11,7 +11,7 @@
                 <i class="fas fa-times d-none"></i>
             </button>
             <div class="collapse navbar-collapse col-xs-12 col-sm-12 navbar-collapse-element" id="navbarReponsive">
-                <ul id="navbar-nav" class="navbar-nav w-100 d-flex justify-content-end">
+                <ul id="navbarNav" class="navbar-nav w-100 d-flex justify-content-end">
                     <li class="nav-item">
                         <a href="{{ route('home') }}" class="nav-link navbar-link-element {{ Route::currentRouteName() == 'home' ? 'active' : '' }}">HOME</a>
                     </li>
@@ -21,9 +21,9 @@
 
                     @guest
                         @if (Route::has('home'))
-                            <li class="nav-item login-register" id="header-login-register">
+                            <li class="nav-item login-register" id="headerLoginRegister">
                                 <a href="#" class="nav-link navbar-link-element" data-toggle="modal"
-                                data-target="#login-register-modal">LOGIN/REGISTER</a>
+                                data-target="#loginRegisterModal">LOGIN/REGISTER</a>
                             </li>
                         @endif
                         @else
@@ -32,11 +32,11 @@
                                     {{ Auth::user()->name }}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-center p-0" aria-labelledby="navbarDropdown" id="dropdown-menu-user">
+                                <div class="dropdown-menu dropdown-menu-center p-0" aria-labelledby="navbarDropdown" id="dropdownMenuUser">
                                     <a href="{{ route('users.show', [Auth::id()]) }}" class="dropdown-item text-center mt-1 p-0">Profile</a>
-                                    <a id="logout-button" class="dropdown-item m-0 text-center mb-2 p-0" href="{{ route('logout') }}">Logout</a>
+                                    <a id="logoutButton" class="dropdown-item m-0 text-center mb-2 p-0" href="{{ route('logout') }}">Logout</a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    <form id="logoutForm" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
                                 </div>

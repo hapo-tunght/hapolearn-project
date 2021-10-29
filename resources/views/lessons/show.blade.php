@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    @include('direction', [$course->id])
+    @include('components.direction', [$course->id])
     <div class="detail-course container-fluid bg-light">
         <div class="container p-0">
             <div class="row">
@@ -20,25 +20,25 @@
                 <div class="col-md-8 p-0">
                     <div class="course-detail-content">
                             <!-- Nav tabs -->
-                        <ul class="tab-bar nav nav-pills d-flex align-items-center" id="pills-tab" role="tablist">
+                        <ul class="tab-bar nav nav-pills d-flex align-items-center" id="pillsTab" role="tablist">
                             <li class="nav-item col-md-" role="presentation">
-                                <a class="nav-link d-flex align-items-center" id="pills-lessons-tab" data-toggle="pill" href="#pills-descriptions" role="tab" aria-controls="pills-lessons" aria-selected="true">
+                                <a class="nav-link d-flex align-items-center" id="pillsLessonsTab" data-toggle="pill" href="#pillsDescriptions" role="tab" aria-controls="pills-lessons" aria-selected="true">
                                     <p class="m-0">Descriptions</p>
                                 </a>
                             </li>
                             <li class="nav-item col-md-3" role="presentation">
-                                <a class="nav-link active text-center d-flex align-items-center" id="pills-documents-tab" data-toggle="pill" href="#pills-documents" role="tab" aria-controls="pills-documents" aria-selected="false">
+                                <a class="nav-link active text-center d-flex align-items-center" id="pillsDocumentsTab" data-toggle="pill" href="#pillsDocuments" role="tab" aria-controls="pills-documents" aria-selected="false">
                                     <p class="m-0">Documents</p>
                                 </a>
                             </li>
                             <li class="nav-item col-md-3" role="presentation">
-                                <a class="nav-link text-center d-flex align-items-center" id="pills-teacher-tab" data-toggle="pill" href="#pills-teacher" role="tab" aria-controls="pills-teacher" aria-selected="false">
+                                <a class="nav-link text-center d-flex align-items-center" id="pillsTeacherTab" data-toggle="pill" href="#pillsTeacher" role="tab" aria-controls="pills-teacher" aria-selected="false">
                                     <p class="m-0">Teachers</p>
                                 </a>
                             </li>
                         </ul>
-                        <div class="tab-content" id="pills-tabContent">
-                            <div class="tab-pane fade" id="pills-descriptions" role="tabpanel" aria-labelledby="pills-lessons-tab">
+                        <div class="tab-content" id="pillsTabContent">
+                            <div class="tab-pane fade" id="pillsDescriptions" role="tabpanel" aria-labelledby="pills-lessons-tab">
                                 <div class="tab-content-descriptions">
                                     <div class="description d-flex flex-column">
                                         <div class="description-title">Descriptions lesson</div>
@@ -57,23 +57,23 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="pills-teacher" role="tabpanel" aria-labelledby="pills-teacher-tab">
+                            <div class="tab-pane fade" id="pillsTeacher" role="tabpanel" aria-labelledby="pills-teacher-tab">
                                 <div class="main-teacher">
                                     <div class="title">Main Teachers</div>
                                     <div class="list-teacher">
                                         @foreach ($course->teachers_of_course as $teacher)
-                                            @include('users.teacher', $teacher)
+                                            @include('components.teacher', $teacher)
                                         @endforeach
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade show active" id="pills-documents" role="tabpanel" aria-labelledby="pills-documents-tab">
+                            <div class="tab-pane fade show active" id="pillsDocuments" role="tabpanel" aria-labelledby="pills-documents-tab">
                                 <div class="documents">
                                     <div class="title d-flex align-items-center">
                                         <p class="m-0 col-md-6">Documents</p>
                                         <div class="col-md-2"></div>
                                         <div class="progress progress-document col-md-4 p-0 mt-3">
-                                            <div id="progress-bar-document" class="progress-bar"
+                                            <div id="progressBarDocument" class="progress-bar"
                                             style="width: {{$lesson->progress . '%'}};" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{$lesson->progress . '%'}}</div>
                                         </div>
                                     </div>
