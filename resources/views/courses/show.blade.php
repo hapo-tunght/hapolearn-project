@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    @include('direction', [$course->id])
+    @include('components.direction', [$course->id])
     <div class="detail-course container-fluid bg-light">
         <div class="container p-0">
             <div class="row">
@@ -75,7 +75,7 @@
                                     <div class="title">Main Teachers</div>
                                     <div class="list-teacher">
                                         @foreach ($course->teachers_of_course as $teacher)
-                                            @include('users.teacher', $teacher)
+                                            @include('components.teacher', $teacher)
                                         @endforeach
                                     </div>
                                 </div>

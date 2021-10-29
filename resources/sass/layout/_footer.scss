@@ -12,7 +12,7 @@
     .brand-logo-img {
       height: 60px;
       width: 292px;
-      background-image: url(../assets/img/hapo_learn_footer.png);
+      background-image: url('/img/hapo_learn_footer.png');
       background-repeat: no-repeat;
       background-size: cover;    
     }
@@ -62,16 +62,16 @@
     }
 
     .contact-facebook {
-      background-image: url(../assets/img/fb_icon.png);    
+      background-image: url('/img/fb_icon.png');    
       margin-left: 50px;
     }
     
     .contact-phone {
-      background-image: url(../assets/img/phone_icon.png);
+      background-image: url('/img/phone_icon.png');
     }
 
     .contact-email {
-      background-image: url(../assets/img/email_icon.png);
+      background-image: url('/img/email_icon.png');
     }
   }
 
