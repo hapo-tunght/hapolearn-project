@@ -231,8 +231,8 @@
         </div>
 
         <div class="chat-box">
-            <div id="fb-root"></div>
-            <div id="fb-customer-chat" class="fb-customerchat"></div>
+            <div id="fbRoot"></div>
+            <div id="fbCustomerChat" class="fb-customerchat"></div>
         </div>
     </div>
 @endsection

@@ -1,19 +1,19 @@
-<div class="login-register-form modal fade p-0" id="login-register-modal">
+<div class="login-register-form modal fade p-0" id="loginRegisterModal">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content modal-content-custom border-0">
             <div class="modal-title">
                 <ul class="nav nav-tabs w-100">
                     <li class="nav-item w-50">
-                        <a id="login-nav-tab" class="nav-link login-nav-tab active" data-toggle="tab" role="tab" href="#login-tab">LOGIN</a>
+                        <a id="loginNavTab" class="nav-link login-nav-tab active" data-toggle="tab" role="tab" href="#loginTab">LOGIN</a>
                     </li>
                     <li class="nav-item w-50">
-                        <a id="register-nav-tab" class="nav-link register-nav-tab" data-toggle="tab" role="tab" href="#register-tab">REGISTER</a>
+                        <a id="registerNavTab" class="nav-link register-nav-tab" data-toggle="tab" role="tab" href="#registerTab">REGISTER</a>
                     </li>
                 </ul>
                 <button type="button" class="close-tab rounded-circle" data-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
             </div>
             <div class="tab-content">
-                <div class="tab-pane fade show active" id="login-tab" role="tabpanel"> 
+                <div class="tab-pane fade show active" id="loginTab" role="tabpanel"> 
                     <form method="POST" action="{{ route('login') }}" class="container">
                         @csrf
 
@@ -69,7 +69,7 @@
                 </div>
 
                 
-                <div class="tab-pane fade register-tab" id="register-tab" role="tabpanel"> 
+                <div class="tab-pane fade register-tab" id="registerTab" role="tabpanel"> 
                     <form method="POST" action="{{ route('register') }}" class="container register-form">
                         @csrf
 
@@ -115,7 +115,7 @@
                         </div>
                         <div class="form-group">
                             <label for="password_confirmation">Repeat Password:</label>
-                            <input id="passwordr_confirmation" type="password" class="form-control" name="password_confirmation" >
+                            <input id="passwordrConfirmation" type="password" class="form-control" name="password_confirmation" >
                         </div>
                         <div class="button-cover w-100 d-flex justify-content-center">
                             <button type="submit" class="btn button-register">REGISTER</button>

@@ -1,9 +1,9 @@
 $(function () {
-  $('#join-this-course-button').on('click', function (event) {
-    if ($('#header-login-register').innerWidth() > 0) {
+  $('#joinThisCourseButton').on('click', function (event) {
+    if ($('#headerLoginRegister').innerWidth() > 0) {
       event.preventDefault();
-      $('#login-register-modal').modal('show');
-      $('#login-nav-tab').trigger('click');
+      $('#loginRegisterModal').modal('show');
+      $('#loginNavTab').trigger('click');
     }
   })
 });

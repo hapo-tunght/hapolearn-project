@@ -9,7 +9,7 @@
                             <div class="d-flex flex-column align-items-center">
                                 <img src="{{ asset($user->avatar) }}"  alt="avatar">
                                 <div class="round-camera d-flex justify-content-center align-items-center">
-                                    <i class="fas fa-camera" data-toggle="modal" data-target="#upload-avatar-modal"></i>
+                                    <i class="fas fa-camera" data-toggle="modal" data-target="#uploadAvatarModal"></i>
                                 </div>
                             </div>
                             <div class="name">{{ $user->name }}</div>
@@ -149,7 +149,7 @@
 
 
         <!-- Modal -->
-        <div class="modal fade" id="upload-avatar-modal" tabindex="-1" role="dialog" aria-labelledby="avatarModalLabel" aria-hidden="true">
+        <div class="modal fade" id="uploadAvatarModal" tabindex="-1" role="dialog" aria-labelledby="avatarModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -158,15 +158,15 @@
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="{{ route('users.update', [Auth::id()]) }}" method="POST" id="upload-avatar-form" enctype="multipart/form-data">
+                    <form action="{{ route('users.update', [Auth::id()]) }}" method="POST" id="uploadAvatarForm" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
                         <div class="modal-body">
                             <div class="form-group input-image-avatar">
                                 <label>Import your image file</label>
-                                <input type="file" class="form-control-file border" id="file-image-input" name="profile_avatar" required>
+                                <input type="file" class="form-control-file border" id="fileImageInput" name="profile_avatar" required>
                                 @error('profile_avatar')
-                                    <span class="invalid-feedback d-block" role="alert" id="image-input-error">
+                                    <span class="invalid-feedback d-block" role="alert" id="imageInputError">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
