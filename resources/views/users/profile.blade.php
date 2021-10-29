@@ -164,7 +164,7 @@
                         <div class="modal-body">
                             <div class="form-group input-image-avatar">
                                 <label>Import your image file</label>
-                                <input type="file" class="form-control-file border" id="file-image-input" name="profile_avatar" required>
+                                <input type="file" class="form-control-file border @error('profile_avatar') is-invalid @enderror" id="file-image-input" name="profile_avatar" required>
                                 @error('profile_avatar')
                                     <span class="invalid-feedback d-block" role="alert" id="image-input-error">
                                         <strong>{{ $message }}</strong>

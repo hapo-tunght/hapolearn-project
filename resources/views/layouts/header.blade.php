@@ -28,7 +28,7 @@
                         @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link navbar-link-element  dropdown-toggle name-of-user {{ Route::currentRouteName() == 'user.profile' ? 'active' : '' }}" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link navbar-link-element  dropdown-toggle name-of-user {{ Route::currentRouteName() == 'users.show' ? 'active' : '' }}" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
