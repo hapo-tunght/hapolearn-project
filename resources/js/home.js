@@ -45,11 +45,11 @@ $(function () {
     $(this).tab('show');
   });
 
-  $('#dropdown-menu-user').css({
+  $('#dropdownMenuUser').css({
     'width': ($('.name-of-user').width() + 35 + 'px')
   });
 
-  var chatbox = document.getElementById('fb-customer-chat');
+  var chatbox = document.getElementById('fbCustomerChat');
   chatbox.setAttribute("page_id", "108828021517439");
   chatbox.setAttribute("attribution", "biz_inbox");
 
@@ -96,23 +96,22 @@ $(function () {
     }
   });
 
-  if ($('#register-tab input').hasClass('is-invalid')) {
-    $('#login-register-modal').modal('show');
-    $('#register-nav-tab').trigger('click');
+  if ($('#registerTab input').hasClass('is-invalid')) {
+    $('#loginRegisterModal').modal('show');
+    $('#registerNavTab').trigger('click');
   }
-  if ($('#login-tab input').hasClass('is-invalid')) {
-    $('#login-register-modal').modal('show');
-    $('#login-nav-tab').trigger('click');
+  if ($('#loginTab input').hasClass('is-invalid')) {
+    $('#loginRegisterModal').modal('show');
+    $('#loginNavTab').trigger('click');
   }
 
   $('.close-tab').on('click', function () {
-    $('#login-register input').removeClass('is-invalid');
-    $('#login-register input').val('');
+    $('#loginRegister input').removeClass('is-invalid');
+    $('#loginRegister input').val('');
     $('.login-tab').hide();
   });
 
-  $('#logout-button').on('click', function (event) {
-    event.preventDefault();
-    $('#logout-form').submit();
+  $('#logoutButton').on('click', function (event) {
+    $('#logoutForm').submit();
   });
 });

@@ -5,17 +5,16 @@ $(function () {
   });
 
   var hash = window.location.hash;
-  $('#pills-tab-detail-course a[href="' + hash + '"]').tab('show');
+  $('#pillsTabDetailCourse a[href="' + hash + '"]').tab('show');
 
-  $('#send-review').on('click', function (event) {
-    $('#pills-lessons-tab').removeClass('active');
-    $('#pills-reviews-tab').addClass('active');
+  $('#sendReview').on('click', function (event) {
+    $('#pillsLessonsTab').removeClass('active');
+    $('#pillsReviewsTab').addClass('active');
     
-    if ($('#header-login-register').innerWidth() > 0) {
+    if ($('#headerLoginRegister').innerWidth() > 0) {
       event.preventDefault();
-      $('#login-register-modal').modal('show');
-      $('#login-nav-tab').trigger('click');
+      $('#loginRegisterModal').modal('show');
+      $('#loginNavTab').trigger('click');
     }
   })
-
 });

@@ -31,7 +31,7 @@ class CourseController extends Controller
         $otherCourses = Course::inRandomOrder()->limit(config('config.numberOfOtherCourses'))->get();
         $reviews = $course->reviews()->orderBy('id', 'desc')->paginate(10, ['*'], 'review_page');
         
-        return view('courses.detail', compact('course', 'lessons', 'otherCourses', 'reviews'));
+        return view('courses.show', compact('course', 'lessons', 'otherCourses', 'reviews'));
     }
 
     public function join(Course $course)
