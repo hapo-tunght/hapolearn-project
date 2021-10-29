@@ -149,7 +149,7 @@
 
 
         <!-- Modal -->
-        <div class="modal fade" id="upload-avatar-modal" tabindex="-1" role="dialog" aria-labelledby="avatarModalLabel" aria-hidden="true">
+        <div class="modal fade" id="uploadAvatarModal" tabindex="-1" role="dialog" aria-labelledby="avatarModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -158,7 +158,7 @@
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="{{ route('users.update', [Auth::id()]) }}" method="POST" id="upload-avatar-form" enctype="multipart/form-data">
+                    <form action="{{ route('users.update', [Auth::id()]) }}" method="POST" id="uploadAvatarForm" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
                         <div class="modal-body">

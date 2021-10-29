@@ -1,5 +1,5 @@
 $(function () {
-  if ($('#upload-avatar-form input').hasClass('is-invalid')) {
-    $('#upload-avatar-modal').modal('show');
+  if ($('#uploadAvatarForm input').hasClass('is-invalid')) {
+    $('#uploadAvatarModal').modal('show');
   }
 });
