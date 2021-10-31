@@ -14,12 +14,12 @@ class DocumentUser extends Model
 
     protected $fillable = ['document_id', 'user_id', 'lesson_id'];
 
-    public function scopeCheckLearned($query, $lessonId, $documentId)
+    public function scopeCheckLearned($query, $request)
     {
         return $query->where([
             ['user_id', '=', Auth::id()],
-            ['document_id', '=', $documentId],
-            ['lesson_id', '=', $lessonId]
+            ['document_id', '=', $request->documentId],
+            ['lesson_id', '=', $request->lessonId]
         ]);
     }
 

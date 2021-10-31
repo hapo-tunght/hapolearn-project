@@ -1,5 +1,6 @@
 {
     "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
     "/img/become_a_member.png": "/img/become_a_member.png",
     "/img/css_course.png": "/img/css_course.png",
     "/img/dropdown_arrow.png": "/img/dropdown_arrow.png",
@@ -29,6 +30,5 @@
     "/img/why_hpl_background.png": "/img/why_hpl_background.png",
     "/img/yellow_star.png": "/img/yellow_star.png",
     "/fonts/utm_bryantlg-webfont.woff": "/fonts/utm_bryantlg-webfont.woff",
-    "/fonts/utm_bryantlg-webfont.woff2": "/fonts/utm_bryantlg-webfont.woff2",
-    "/css/app.css": "/css/app.css"
+    "/fonts/utm_bryantlg-webfont.woff2": "/fonts/utm_bryantlg-webfont.woff2"
 }

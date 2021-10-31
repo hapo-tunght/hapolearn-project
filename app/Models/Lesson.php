@@ -50,11 +50,11 @@ class Lesson extends Model
         return ($percentageProgress == 0) ? 0 : round($percentageProgress);
     }
 
-    public function scopeSearch($query, $data, $course)
+    public function scopeSearch($query, $request, $course)
     {
-        if (isset($data['keyword_lesson'])) {
+        if (isset($request['keyword_lesson'])) {
             $query->where('course_id', $course->id)
-            ->where('title', 'LIKE', '%' . $data['keyword_lesson'] . '%');
+            ->where('title', 'LIKE', '%' . $request['keyword_lesson'] . '%');
         } else {
             $query->where('course_id', $course->id);
         }

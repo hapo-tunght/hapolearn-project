@@ -12,7 +12,7 @@
                 <i class="far fa-star"></i>
             @endfor
         </div>
-        <div class="review-time">{{ $review->user->created_at->toFormattedDateString() }} at {{ $review->user->created_at->toTimeString() }}</div>
+        <div class="review-time">{{ $review->created_at->toFormattedDateString() }} at {{ $review->created_at->toTimeString() }}</div>
     </div>
     <div class="review-item-bottom">
         <div class="content">{{ $review->content }}</div>
