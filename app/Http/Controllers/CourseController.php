@@ -16,22 +16,17 @@ class CourseController extends Controller
 {
     public function index(Request $request)
     {
-        $data = $request->all();
-        $teachers = User::teachers()->get();
-        $courses = Course::filter($data)->paginate(config('config.pagination'));
+        $teachers = User::where('role', config('config.role.teacher'))->get();
+        $courses = Course::filter($request)->paginate(config('config.pagination'));
         $tags = Tag::get();
-        
         return view('courses.index', compact('courses', 'teachers', 'tags'));
     }
 
     public function show(Request $request, Course $course)
     {
-        $data = $request->all();
-        $lessons = Lesson::search($data, $course)->paginate(config('config.pagination'), ['*'], 'lesson_page');
-        $otherCourses = Course::inRandomOrder()->limit(config('config.numberOfOtherCourses'))->get();
+        $lessons = Lesson::search($request, $course)->paginate(config('config.pagination'), ['*'], 'lesson_page');
         $reviews = $course->reviews()->orderBy('id', 'desc')->paginate(10, ['*'], 'review_page');
-        
-        return view('courses.show', compact('course', 'lessons', 'otherCourses', 'reviews'));
+        return view('courses.show', compact('course', 'lessons', 'reviews'));
     }
 
     public function join(Course $course)
@@ -48,14 +43,7 @@ class CourseController extends Controller
 
     public function review(Request $request, Course $course)
     {
-        $data = $request->all();
-        Review::create([
-            'user_id' => Auth::id(),
-            'course_id' => $course->id,
-            'content' => $data['review_content'],
-            'rate' => $data['rate'],
-        ]);
-        
+        $course->addReview($course, $request);
         return back()->with('post_review', 'check');
     }
 }

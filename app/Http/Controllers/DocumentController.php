@@ -13,19 +13,17 @@ class DocumentController extends Controller
     
     public function learn(Request $request)
     {
-        $lessonId = $request->lessonId;
-        $documentId = $request->documentId;
-        $checkLearned = empty(DocumentUser::query()->checkLearned($lessonId, $documentId, Auth::id())->first());
+        $checkLearned = empty(DocumentUser::query()->checkLearned($request, Auth::id())->first());
 
         if ($checkLearned) {
             DocumentUser::create([
                 'user_id' => Auth::id(),
-                'lesson_id' => $lessonId,
-                'document_id' => $documentId
+                'lesson_id' => $request->lessonId,
+                'document_id' => $request->documentId
             ]);
         }
 
-        $percentageProgress = Lesson::find($lessonId)->progress;
+        $percentageProgress = Lesson::find($request->lessonId)->progress;
 
         return response()->json([
             'percentage' => $percentageProgress

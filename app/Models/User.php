@@ -91,11 +91,6 @@ class User extends Authenticatable
         return $this->courses()->get();
     }
 
-    public function scopeTeachers($query)
-    {
-        $query->where('role', config('config.role.teacher'));
-    }
-
     public function updateProfile($request, $user)
     {
         $user->update([
