@@ -21,7 +21,7 @@ class CourseController extends Controller
     public function show(Request $request, Course $course)
     {
         $lessons = Lesson::search($request, $course)->paginate(config('config.pagination'), ['*'], 'lesson_page');
-        $reviews = $course->reviews()->orderBy('id', 'desc')->paginate(10, ['*'], 'review_page');
+        $reviews = $course->reviews()->orderBy('id', 'desc')->paginate(config('config.pagination'), ['*'], 'review_page');
         return view('courses.show', compact('course', 'lessons', 'reviews'));
     }
 }
