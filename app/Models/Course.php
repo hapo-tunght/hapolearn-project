@@ -55,7 +55,6 @@ class Course extends Model
     {
         return $this->lessons()->sum('learn_time');
     }
-    
     public function getLessonsAttribute()
     {
         return $this->lessons()->paginate(config('config.pagination'));
@@ -88,19 +87,19 @@ class Course extends Model
 
     public function getDecimalRatingOverviewAttribute()
     {
-        $decimal = $this->rating_overview - floor($this->rating_overview);
+        $decimal = $this->getRatingOverviewAttribute() - floor($this->getRatingOverviewAttribute());
         return $decimal;
     }
 
     public function getPercentageRatingAttribute()
     {
-        return count($this->reviews) == 0
-                ? 0
-                : ($this->decimal_rating_overview < 0.25
-                    ? number_format(floor($this->rating_overview), 1)
-                    : ($this->decimal_rating_overview >= 0.75
-                        ? number_format(floor($this->rating_overview) + 1, 1)
-                        : floor($this->rating_overview) + 0.5));
+        if ($this->getDecimalRatingOverviewAttribute() < 0.25) {
+            return number_format(floor($this->getRatingOverviewAttribute()), 1);
+        } elseif ($this->getDecimalRatingOverviewAttribute() >= 0.75) {
+            return number_format(floor($this->getRatingOverviewAttribute()) + 1, 1);
+        } else {
+            return floor($this->getRatingOverviewAttribute()) + 0.5;
+        }
     }
 
     public function getOtherCoursesAttribute()

@@ -3,7 +3,7 @@
     <div class="row preview-rating">
         <div class="col-4">
             <div class="rating-overview w-100 d-flex flex-column justify-content-center align-items-center">
-                <div class="average-rating">{{ $course->percentage_rating }}</div>
+                <div class="average-rating">{{ ($course->reviews->count() == 0) ? 0 : $course->percentage_rating }}</div>
                 <div class="average-rating-star">
                     @if (is_float($course->percentage_rating))
                         @for ($i = 0; $i < (int) $course->percentage_rating; $i++)
