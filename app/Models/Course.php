@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 
 class Course extends Model
@@ -42,7 +41,7 @@ class Course extends Model
         return $this->users()->where('role', config('config.role.student'))->count();
     }
 
-    public function getTeachersOfCourseAttribute()
+    public function getTeachersAttribute()
     {
         return $this->users()->where('role', config('config.role.teacher'))->get();
     }
@@ -56,6 +55,7 @@ class Course extends Model
     {
         return $this->lessons()->sum('learn_time');
     }
+    
     public function getLessonsAttribute()
     {
         return $this->lessons()->paginate(config('config.pagination'));
@@ -66,7 +66,7 @@ class Course extends Model
         return $this->tags()->inRandomOrder()->limit(2)->get();
     }
 
-    public function getCheckJoinedCourseAttribute()
+    public function getIsJoinedAttribute()
     {
         return $this->users()->where('user_id', Auth::id())->first();
     }
@@ -81,27 +81,31 @@ class Course extends Model
         return array_reverse($numberRating);
     }
 
+    public function getRatingOverviewAttribute()
+    {
+        return $this->reviews->avg('rate');
+    }
+
+    public function getDecimalRatingOverviewAttribute()
+    {
+        $decimal = $this->rating_overview - floor($this->rating_overview);
+        return $decimal;
+    }
+
     public function getPercentageRatingAttribute()
     {
-        if (count($this->reviews) == 0) {
-            return 0;
-        } else {
-            $ratingOverview = $this->reviews->avg('rate');
-            $difference = $ratingOverview - (int) $ratingOverview;
-
-            if ($difference < 0.25) {
-                return number_format((int) $ratingOverview, 1);
-            } elseif ($difference >= 0.25 && $difference < 0.75) {
-                return (int) $ratingOverview + 0.5;
-            } elseif ($difference >= 0.75) {
-                return number_format((int) $ratingOverview + 1, 1);
-            }
-        }
+        return count($this->reviews) == 0
+                ? 0
+                : ($this->decimal_rating_overview < 0.25
+                    ? number_format(floor($this->rating_overview), 1)
+                    : ($this->decimal_rating_overview >= 0.75
+                        ? number_format(floor($this->rating_overview) + 1, 1)
+                        : floor($this->rating_overview) + 0.5));
     }
 
     public function getOtherCoursesAttribute()
     {
-        return $this->where('id', '!=', $this->id)->inRandomOrder()->limit(config('config.numberOfOtherCourses'))->get();
+        return $this->where('id', '<>', $this->id)->inRandomOrder()->limit(config('config.numberOfOtherCourses'))->get();
     }
 
     public function scopeFilter($query, $request)
@@ -154,15 +158,5 @@ class Course extends Model
             }
         }
         return $query;
-    }
-
-    public function addReview($course, $request)
-    {
-        Review::create([
-            'user_id' => Auth::id(),
-            'course_id' => $course->id,
-            'content' => $request['review_content'],
-            'rate' => $request['rate'],
-        ]);
     }
 }

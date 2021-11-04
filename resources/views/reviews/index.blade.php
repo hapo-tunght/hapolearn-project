@@ -58,10 +58,10 @@
         </div>
     </div>
     <div class="pagination-custom container mt-5 pr-4 d-flex justify-content-end">
-        {!! $reviews->appends($_GET)->fragment('pills-reviews')->onEachSide(1)->links() !!}
+        {!! $reviews->appends($_GET)->fragment('pillsReviews')->onEachSide(1)->links() !!}
     </div>
     <div class="submit-review d-flex flex-column">
-        <form action="{{route('courses.review', [$course->id])}}" method="post">
+        <form action="{{route('reviews.store', ['course_id' => $course])}}" method="post">
             @csrf
             <div class="title">Submit review</div>
             <div class="form-group">

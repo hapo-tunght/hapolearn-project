@@ -61,7 +61,7 @@
                                 <div class="main-teacher">
                                     <div class="title">Main Teachers</div>
                                     <div class="list-teacher">
-                                        @foreach ($course->teachers_of_course as $teacher)
+                                        @foreach ($course->teachers as $teacher)
                                             @include('components.teacher', $teacher)
                                         @endforeach
                                     </div>
