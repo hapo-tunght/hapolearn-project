@@ -3,7 +3,7 @@
     <div class="row preview-rating">
         <div class="col-4">
             <div class="rating-overview w-100 d-flex flex-column justify-content-center align-items-center">
-                <div class="average-rating">{{ $course->percentage_rating }}</div>
+                <div class="average-rating">{{ ($course->reviews->count() == 0) ? 0 : $course->percentage_rating }}</div>
                 <div class="average-rating-star">
                     @if (is_float($course->percentage_rating))
                         @for ($i = 0; $i < (int) $course->percentage_rating; $i++)
@@ -58,10 +58,10 @@
         </div>
     </div>
     <div class="pagination-custom container mt-5 pr-4 d-flex justify-content-end">
-        {!! $reviews->appends($_GET)->fragment('pills-reviews')->onEachSide(1)->links() !!}
+        {!! $reviews->appends($_GET)->fragment('pillsReviews')->onEachSide(1)->links() !!}
     </div>
     <div class="submit-review d-flex flex-column">
-        <form action="{{route('courses.review', [$course->id])}}" method="post">
+        <form action="{{route('reviews.store', ['course_id' => $course])}}" method="post">
             @csrf
             <div class="title">Submit review</div>
             <div class="form-group">

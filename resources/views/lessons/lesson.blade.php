@@ -1,6 +1,6 @@
 <div class="list-lesson-items">
     <div class="row h-100">
-        @if (empty($course->check_joined_course) == true)
+        @if (empty($course->is_joined) == true)
             <div class="col-md-12 d-flex align-items-center">
                 <a href="" class="lesson-items-title">
                     {{ ($lessons->currentPage() - 1)*config('config.pagination') + $key + 1 }}. {{ $lesson->title }}

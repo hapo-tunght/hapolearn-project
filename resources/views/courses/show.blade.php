@@ -51,12 +51,14 @@
                                             </form>          
                                         </div>
                                         <div class="col-md-6 d-flex justify-content-center">
-                                            @if (empty($course->checkJoinedCourse) == false)
+                                            @if (!empty($course->isJoined))
                                                 <button type="" class="joined-course">Joined</button>  
                                             @else
-                                                <form action="{{route('courses.join', [$course->id])}}" method="GET">
+                                                <form action="{{ route('course-users.store') }}" method="POST">
+                                                    @csrf
+                                                    <input class="d-none" type="text" name="course_id" value="{{ $course->id }}">
                                                     <button type="submit" class="btn join-this-course-button" id="joinThisCourseButton">Join this course</button>
-                                                </form>                                                
+                                                </form>
                                             @endif
                                         </div>
                                     </div>
@@ -74,7 +76,7 @@
                                 <div class="main-teacher">
                                     <div class="title">Main Teachers</div>
                                     <div class="list-teacher">
-                                        @foreach ($course->teachers_of_course as $teacher)
+                                        @foreach ($course->teachers as $teacher)
                                             @include('components.teacher', $teacher)
                                         @endforeach
                                     </div>
@@ -121,10 +123,11 @@
                                 <div class="ml-2">:  free</div>
                             </div>
                             
-                            @if (empty($course->checkJoinedCourse) == false)
+                            @if (empty($course->isJoined) == false)
                                 <div class="data leave-this-course d-flex justify-content-center align-items-center d-none">
-                                    <form action="{{route('courses.leave', [$course])}}" method="GET">
+                                    <form action="{{route('course-users.destroy', [$course])}}" method="POST">
                                         @csrf
+                                        @method('DELETE')
                                         <button type="submit" class="btn leave-this-course-button">Leave this course</button>
                                     </form>
                                 </div>                                    
