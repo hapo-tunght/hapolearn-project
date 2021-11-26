@@ -76,6 +76,7 @@ class LoginController extends Controller
                 ->with('error', 'Username or Password are wrong.');
         }
     }
+    
     /**
      * Create a new controller instance.
      *

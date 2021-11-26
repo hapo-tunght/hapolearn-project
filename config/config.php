@@ -1,7 +1,7 @@
 <?php
 
 return [
-  'pagination' => 14,
+  'pagination' => 10,
 
   'role' => [
     'teacher' => 1,
@@ -23,5 +23,9 @@ return [
     'three_stars' => 3,
     'two_stars' => 2,
     'one_star' => 1,
+  ],
+
+  'pageName' => [
+    'Admin' => 'Admin'
   ]
 ];

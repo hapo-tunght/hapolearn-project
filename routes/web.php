@@ -10,6 +10,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\CourseUserController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\Auth\AdminLoginController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AccountManagementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,4 +41,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('users', UserController::class)->only(['show', 'update']);
     
     Route::post('/documents/learned', [DocumentController::class, 'learn']);
+});
+
+Route::prefix('admin')->group(function () {
+    Route::get('/login', [AdminLoginController::class, 'showAdminLoginForm'])->name('admin.show_login');
+    Route::post('/login', [AdminLoginController::class, 'login'])->name('admin.login');
+    Route::resource('management', AccountManagementController::class)->only(['index']);
+});
+
+Route::group(['middleware' => ['auth', 'admin']], function () {
+    Route::resource('admin', AdminController::class)->only(['index']);
 });
