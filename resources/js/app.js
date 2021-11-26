@@ -7,3 +7,4 @@ require('./course_detail');
 require('./documents');
 require('./profile');
 require('./review');
+require('./management');
